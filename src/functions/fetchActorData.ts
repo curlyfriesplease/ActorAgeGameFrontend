@@ -1,6 +1,9 @@
+import { Actor } from '../types/types';
+
 export const fetchActorData = (
   actor1: number | null,
-  actor2: number | null
+  actor2: number | null,
+  setCurrentActors: React.Dispatch<React.SetStateAction<Array<Actor>>>
 ) => {
   fetch('https://39gvqht805.execute-api.eu-west-2.amazonaws.com/v1/actors', {
     method: 'POST',
@@ -20,8 +23,9 @@ export const fetchActorData = (
       return response.json();
     })
     .then((data) => {
-      console.log(data.body);
-      return data.body;
+      const jsonObject = JSON.parse(data.body).message;
+      console.log('jsonObject', jsonObject);
+      setCurrentActors(jsonObject);
     })
     .catch((error) => console.error('error', error));
 };
