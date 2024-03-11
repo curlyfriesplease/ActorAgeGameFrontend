@@ -37,17 +37,20 @@ export const MainContainer = () => {
       <h2 className="text-orange-500">HOWTA game</h2>
       {currentActors && currentActors[0] ? (
         <ActorCard
-          actor={currentActors[0]}
+          data={currentActors[0]}
           onClick={() => handleClickActorCard(0)}
         />
       ) : null}
       {currentActors && currentActors[1] ? (
         <ActorCard
-          actor={currentActors[1]}
+          data={currentActors[1]}
           onClick={() => handleClickActorCard(1)}
         />
       ) : null}
       <h4 className="text-emerald-400">Current score: {currentScore}</h4>
+      <h4 className="text-emerald-400">
+        questionNotYetAnswered: {String(questionNotYetAnswered)}
+      </h4>
     </div>
   );
 };
