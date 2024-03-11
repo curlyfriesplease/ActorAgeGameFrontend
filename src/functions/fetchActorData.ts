@@ -5,6 +5,7 @@ export const fetchActorData = (
   actor2: number | null,
   setCurrentActors: React.Dispatch<React.SetStateAction<Array<Actor>>>
 ) => {
+  console.log('hello from fetchActorData');
   fetch('https://39gvqht805.execute-api.eu-west-2.amazonaws.com/v1/actors', {
     method: 'POST',
     headers: {
@@ -16,7 +17,7 @@ export const fetchActorData = (
     }),
   })
     .then((response) => {
-      // console.log('response', response);
+      console.log('response', response);
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }

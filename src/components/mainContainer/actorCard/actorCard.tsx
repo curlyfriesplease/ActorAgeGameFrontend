@@ -1,9 +1,13 @@
 import { Actor } from '../../../types/types';
 
-export const ActorCard = (data: Actor) => {
+export const ActorCard = (data: Actor, ...props: any[]) => {
   console.log('actorCard:', data);
   return (
-    <div id="actor-card">
+    <div
+      id="actor-card"
+      onClick={props.onClick}
+      className="outline-dashed outline-2 outline-offset-2 m-5 p-7"
+    >
       <h4>Actor Card</h4>
       <p>{data?.actor?.name}</p>
       <p>{data?.actor?.birthday}</p>

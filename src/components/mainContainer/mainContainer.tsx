@@ -10,27 +10,44 @@ export const MainContainer = () => {
   const [questionNotYetAnswered, setQuestionNotYetAnswered] =
     useState<boolean>(false);
 
+  const handleClickActorCard = (choice: number) => {
+    console.log(
+      'clickActorCard:',
+      choice,
+      'questionNotYetAnswered',
+      questionNotYetAnswered
+    );
+    // is correct answer?
+    setQuestionNotYetAnswered(false);
+  };
+
   useEffect(() => {
     console.log('useEffect triggered');
-    const fetchData = async () => {
-      const actors = await fetchActorData(null, null, setCurrentActors);
-    };
-
-    if (currentActors.length === 0 || questionNotYetAnswered) {
-      fetchData();
+    console.log('currentActors', currentActors);
+    console.log('questionNotYetAnswered', questionNotYetAnswered);
+    if (currentActors.length === 0 || !questionNotYetAnswered) {
+      console.log('fetchActorData called');
+      fetchActorData(null, null, setCurrentActors);
+      setQuestionNotYetAnswered(true);
     }
   }, []);
 
   return (
     <div id="main-container">
-      <h3>HOWTA game</h3>
-      <h4>Array length: {currentActors?.length}</h4>
+      <h2 className="text-orange-500">HOWTA game</h2>
       {currentActors && currentActors[0] ? (
-        <ActorCard actor={currentActors[0]} />
+        <ActorCard
+          actor={currentActors[0]}
+          onClick={() => handleClickActorCard(0)}
+        />
       ) : null}
       {currentActors && currentActors[1] ? (
-        <ActorCard actor={currentActors[1]} />
+        <ActorCard
+          actor={currentActors[1]}
+          onClick={() => handleClickActorCard(1)}
+        />
       ) : null}
+      <h4 className="text-emerald-400">Current score: {currentScore}</h4>
     </div>
   );
 };
