@@ -26,7 +26,19 @@ export const fetchActorData = (
     .then((data) => {
       const jsonObject = JSON.parse(data.body).message;
       console.log('jsonObject', jsonObject);
-      setCurrentActors(jsonObject);
+      if (
+        jsonObject.length === 2 &&
+        'birthday' in jsonObject[0] &&
+        'birthday' in jsonObject[1]
+      ) {
+        console.log('both actors have birthdays');
+        setCurrentActors(jsonObject);
+      } else {
+        console.log(
+          '🔴 at least one actor does not have a birthday, fetching again'
+        );
+        fetchActorData(null, null, setCurrentActors);
+      }
     })
     .catch((error) => console.error('error', error));
 };
