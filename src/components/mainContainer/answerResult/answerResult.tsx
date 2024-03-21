@@ -5,7 +5,7 @@ export const AnswerResult = ({
   setQuestionNotYetAnswered: (value: boolean) => void;
   lastAnswer: boolean;
 }) => {
-  console.log(lastAnswer, ' < lastAnswer');
+  console.log(lastAnswer, ' answerResult lastAnswer');
   return (
     <div id="answer-result">
       <button

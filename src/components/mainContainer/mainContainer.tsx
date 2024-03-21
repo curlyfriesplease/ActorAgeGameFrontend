@@ -5,11 +5,13 @@ import './style.css';
 import { Actor } from '../../types/types';
 import { Footer } from './footer/footer';
 import { Header } from './header/header';
+import { Loading } from '../Loading/loading';
 
 export const MainContainer = () => {
   const [currentActors, setCurrentActors] = useState<Array<Actor>>([]);
   const [currentScore, setCurrentScore] = useState<number>(0);
   const [lastAnswer, setLastAnswer] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const [questionNotYetAnswered, setQuestionNotYetAnswered] =
     useState<boolean>(false);
 
@@ -46,7 +48,8 @@ export const MainContainer = () => {
       }
     }
     setQuestionNotYetAnswered(false);
-    fetchActorData(null, null, setCurrentActors);
+    setIsLoading(true);
+    fetchActorData(null, null, setCurrentActors, setIsLoading);
   };
 
   useEffect(() => {
@@ -55,7 +58,7 @@ export const MainContainer = () => {
     console.log('questionNotYetAnswered', questionNotYetAnswered);
     if (currentActors.length === 0 || !questionNotYetAnswered) {
       console.log('fetchActorData called');
-      fetchActorData(null, null, setCurrentActors);
+      fetchActorData(null, null, setCurrentActors, setIsLoading);
       setQuestionNotYetAnswered(true);
     }
   }, []);
@@ -82,21 +85,21 @@ export const MainContainer = () => {
         bg-lime-900
         "
       >
-        {currentActors && currentActors[0] ? (
+        {currentActors && currentActors[0] && !isLoading ? (
           <ActorCard
             data={currentActors[0]}
             onClick={() => handleClickActorCard(0)}
           />
         ) : (
-          <p className="h-[50%]">Loading....</p>
+          <Loading />
         )}
-        {currentActors && currentActors[1] ? (
+        {currentActors && currentActors[1] && !isLoading ? (
           <ActorCard
             data={currentActors[1]}
             onClick={() => handleClickActorCard(1)}
           />
         ) : (
-          <p className="h-[50%]">Loading....</p>
+          <Loading />
         )}
       </div>
       <Footer

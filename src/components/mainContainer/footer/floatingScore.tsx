@@ -1,6 +1,6 @@
 export const FloatingScore = ({ currentScore }: { currentScore: number }) => {
   return (
-    <h4
+    <div
       className="
       id='floatingScore'
       text-emerald-400 
@@ -14,8 +14,8 @@ export const FloatingScore = ({ currentScore }: { currentScore: number }) => {
       bg-amber-700
       "
     >
-      Score:
-      <h3>{currentScore}</h3>
-    </h4>
+      <h4>Score:</h4>
+      <h4>{currentScore}</h4>
+    </div>
   );
 };

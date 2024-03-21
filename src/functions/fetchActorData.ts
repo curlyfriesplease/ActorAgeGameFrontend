@@ -3,7 +3,8 @@ import { Actor } from '../types/types';
 export const fetchActorData = (
   actor1: number | null,
   actor2: number | null,
-  setCurrentActors: React.Dispatch<React.SetStateAction<Array<Actor>>>
+  setCurrentActors: React.Dispatch<React.SetStateAction<Array<Actor>>>,
+  setIsLoading: React.Dispatch<React.SetStateAction<boolean>>
 ) => {
   console.log('hello from fetchActorData');
   fetch('https://39gvqht805.execute-api.eu-west-2.amazonaws.com/v1/actors', {
@@ -38,8 +39,9 @@ export const fetchActorData = (
         console.log(
           '🔴 at least one actor does not have a birthday, fetching again'
         );
-        fetchActorData(null, null, setCurrentActors);
+        fetchActorData(null, null, setCurrentActors, setIsLoading);
       }
     })
+    .then(() => setIsLoading(false))
     .catch((error) => console.error('error', error));
 };

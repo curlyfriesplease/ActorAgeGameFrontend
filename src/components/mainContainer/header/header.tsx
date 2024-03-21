@@ -12,7 +12,7 @@ export const Header = () => {
     rounded p-1
     "
     >
-      <h2 className="text-orange-500">Who's the oldest?</h2>
+      <h2 className="text-orange-500">HOWTA GAME</h2>
     </div>
   );
 };
