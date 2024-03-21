@@ -63,7 +63,7 @@ export const ActorCard = ({
             "
           >
             <p>{data?.name}</p>
-            <p>{data?.birthday}</p>
+            {/* <p>{data?.birthday}</p> */}
           </div>
         </div>
       )}

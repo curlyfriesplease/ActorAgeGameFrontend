@@ -2,6 +2,20 @@
   max-width: 1280px;
   margin: 0 auto;
   text-align: center;
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 255, 190, 147;
+  --background-end-rgb: 167, 199, 231;
+}
+
+#appDiv {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb)) 100vh
+    )
+    rgb(var(--background-start-rgb));
+  background-attachment: fixed;
 }
 
 .logo {

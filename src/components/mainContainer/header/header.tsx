@@ -1,3 +1,5 @@
+import HOWTA_png_small_title_compressed from '../../../assets/HOWTA_png_small_title_compressed.png';
+
 export const Header = () => {
   return (
     <div
@@ -12,7 +14,11 @@ export const Header = () => {
     rounded p-1
     "
     >
-      <h2 className="text-orange-500">HOWTA GAME</h2>
+      <img
+        src={HOWTA_png_small_title_compressed}
+        alt="HOWTA"
+        className="max-w-full h-full"
+      />
     </div>
   );
 };

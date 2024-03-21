@@ -72,7 +72,6 @@ export const MainContainer = () => {
     items-center 
     justify-between
     h-screen
-    bg-teal-800
     "
     >
       <Header />
