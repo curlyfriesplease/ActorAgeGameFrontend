@@ -1,16 +1,19 @@
-import { Actor } from '../../../types/types';
-
-export const AnswerResult = (
-  currentActors: Array<Actor>,
-  setCurrentScore: Function,
-  setQuestionNotYetAnswered: (value: boolean) => void,
-  lastAnswer: Boolean
-) => {
+export const AnswerResult = ({
+  setQuestionNotYetAnswered,
+  lastAnswer,
+}: {
+  setQuestionNotYetAnswered: (value: boolean) => void;
+  lastAnswer: boolean;
+}) => {
+  console.log(lastAnswer, ' < lastAnswer');
   return (
     <div id="answer-result">
-      <h2>Answer Result</h2>
-      <p>{lastAnswer ? 'Correct!' : 'Wrong!'}</p>
-      <button onClick={() => setQuestionNotYetAnswered(false)}>Next</button>
+      <button
+        onClick={() => setQuestionNotYetAnswered(false)}
+        className="h-6 p-0 w-[40%]"
+      >
+        {lastAnswer ? 'Correct!' : 'Wrong!'}
+      </button>
     </div>
   );
 };

@@ -3,7 +3,11 @@ module.exports = {
   purge: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
   theme: {
-    extend: {},
+    extend: {
+      spacing: {
+        15: '3.75rem', // 15 * 0.25rem = 3.75rem
+      },
+    },
   },
   variants: {
     extend: {},
