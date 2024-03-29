@@ -3,9 +3,11 @@ import { FloatingScore } from './floatingScore';
 export const Footer = ({
   questionNotYetAnswered,
   currentScore,
+  lastAnswer,
 }: {
   questionNotYetAnswered: boolean;
   currentScore: number;
+  lastAnswer: boolean;
 }) => {
   console.log(questionNotYetAnswered, 'questionNotYetAnswered');
   return (
@@ -20,7 +22,7 @@ export const Footer = ({
         relative
         "
     >
-      <FloatingScore currentScore={currentScore} />
+      {lastAnswer && <FloatingScore currentScore={currentScore} />}
     </div>
   );
 };

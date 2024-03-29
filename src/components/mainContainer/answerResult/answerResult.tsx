@@ -1,9 +1,13 @@
 export const AnswerResult = ({
   goToNextQuestion,
   lastAnswer,
+  currentScore,
+  startNewGame,
 }: {
   goToNextQuestion: () => void;
   lastAnswer: boolean;
+  currentScore: number;
+  startNewGame: () => void;
 }) => {
   console.log(lastAnswer, ' answerResult lastAnswer');
   return (
@@ -19,12 +23,30 @@ export const AnswerResult = ({
       w-[80vw]
       h-full
       flex
+      flex-col
       justify-center
       items-center
       "
-      onClick={() => goToNextQuestion()}
+      onClick={() => {
+        if (lastAnswer) goToNextQuestion();
+      }}
     >
-      <p className="h-6 p-0 w-[40%]">{lastAnswer ? 'Correct!' : 'Wrong!'}</p>
+      <p
+        className="h-6 
+      p-0 
+      w-[40%]
+      bg-lime-500 
+      "
+      >
+        {lastAnswer ? 'Correct!' : 'Wrong!'}
+      </p>
+
+      {!lastAnswer && (
+        <>
+          <p className="bg-lime-500">Final score: {currentScore}</p>
+          <p onClick={() => startNewGame()}>Start new game</p>
+        </>
+      )}
     </div>
   );
 };

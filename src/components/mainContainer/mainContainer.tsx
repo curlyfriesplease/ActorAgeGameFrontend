@@ -29,6 +29,16 @@ export const MainContainer = () => {
     setQuestionNotYetAnswered(true);
   };
 
+  const startNewGame = () => {
+    setCurrentScore(0);
+    setCurrentActors([]);
+    setNextQuestionActors([]);
+    setLastAnswer(false);
+    setQuestionNotYetAnswered(true);
+    setIsLoading(true);
+    fetchActorData(null, null, setCurrentActors, setIsLoading);
+  };
+
   const actor1isOlder = currentActors[0]?.birthday < currentActors[1]?.birthday;
   const showAnswerScreen =
     currentActors.length === 2 && !questionNotYetAnswered;
@@ -75,11 +85,12 @@ export const MainContainer = () => {
     console.group('useEffect triggered');
     console.log('currentActors', currentActors);
     console.log('questionNotYetAnswered', questionNotYetAnswered);
-    if (currentActors.length === 0 || !questionNotYetAnswered) {
-      console.log('fetchActorData called');
-      fetchActorData(null, null, setCurrentActors, setIsLoading);
-      setQuestionNotYetAnswered(true);
-    }
+    // if (currentActors.length === 0 || !questionNotYetAnswered) {
+    //   console.log('fetchActorData called');
+    //   fetchActorData(null, null, setCurrentActors, setIsLoading);
+    //   setQuestionNotYetAnswered(true);
+    // }
+    startNewGame();
     console.groupEnd();
   }, []);
 
@@ -131,6 +142,8 @@ export const MainContainer = () => {
             <AnswerResult
               goToNextQuestion={goToNextQuestion}
               lastAnswer={lastAnswer}
+              currentScore={currentScore}
+              startNewGame={startNewGame}
             />
           </>
         ) : null}
@@ -138,6 +151,7 @@ export const MainContainer = () => {
       <Footer
         questionNotYetAnswered={questionNotYetAnswered}
         currentScore={currentScore}
+        lastAnswer={lastAnswer}
       />
     </div>
   );
