@@ -1,18 +1,10 @@
-import { AnswerResult } from '../answerResult/answerResult';
-import { Actor } from '../../../types/types';
 import { FloatingScore } from './floatingScore';
 
 export const Footer = ({
-  currentActors,
   questionNotYetAnswered,
-  setQuestionNotYetAnswered,
-  lastAnswer,
   currentScore,
 }: {
-  currentActors: Array<Actor>;
   questionNotYetAnswered: boolean;
-  setQuestionNotYetAnswered: (value: boolean) => void;
-  lastAnswer: boolean;
   currentScore: number;
 }) => {
   console.log(questionNotYetAnswered, 'questionNotYetAnswered');
@@ -28,12 +20,6 @@ export const Footer = ({
         relative
         "
     >
-      {currentActors.length === 2 && !questionNotYetAnswered ? (
-        <AnswerResult
-          setQuestionNotYetAnswered={setQuestionNotYetAnswered}
-          lastAnswer={lastAnswer}
-        />
-      ) : null}
       <FloatingScore currentScore={currentScore} />
     </div>
   );

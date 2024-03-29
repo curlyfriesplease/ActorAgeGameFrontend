@@ -3,10 +3,25 @@ import { Actor } from '../../../types/types';
 export const ActorCard = ({
   data,
   onClick,
+  age,
+  questionNotYetAnswered,
 }: {
   data: Actor;
   onClick: () => void;
+  age: string;
+  questionNotYetAnswered: boolean;
 }) => {
+  const getAge = (ageString: string) => {
+    const today = new Date();
+    const birthDate = new Date(ageString);
+    let ageAsInteger = today.getFullYear() - birthDate.getFullYear();
+    const m = today.getMonth() - birthDate.getMonth();
+    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+      ageAsInteger--;
+    }
+    return ageAsInteger;
+  };
+
   return (
     <div
       id="actor-card"
@@ -65,6 +80,21 @@ export const ActorCard = ({
             <p>{data?.name}</p>
             {/* <p>{data?.birthday}</p> */}
           </div>
+
+          {!questionNotYetAnswered && (
+            <div
+              id="actorAge"
+              className="
+            absolute 
+            bottom-15 
+            right-3 
+            bg-fuchsia-500 
+            rounded p-2
+            "
+            >
+              <p>{getAge(age)}</p>
+            </div>
+          )}
         </div>
       )}
     </div>

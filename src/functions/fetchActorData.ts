@@ -3,7 +3,7 @@ import { Actor } from '../types/types';
 export const fetchActorData = (
   actor1: number | null,
   actor2: number | null,
-  setCurrentActors: React.Dispatch<React.SetStateAction<Array<Actor>>>,
+  setActors: React.Dispatch<React.SetStateAction<Array<Actor>>>,
   setIsLoading: React.Dispatch<React.SetStateAction<boolean>>
 ) => {
   console.log('hello from fetchActorData');
@@ -34,12 +34,12 @@ export const fetchActorData = (
         jsonObject[1].birthday !== null
       ) {
         console.log('both actors have birthdays');
-        setCurrentActors(jsonObject);
+        setActors(jsonObject);
       } else {
         console.log(
           '🔴 at least one actor does not have a birthday, fetching again'
         );
-        fetchActorData(null, null, setCurrentActors, setIsLoading);
+        fetchActorData(null, null, setActors, setIsLoading);
       }
     })
     .then(() => setIsLoading(false))

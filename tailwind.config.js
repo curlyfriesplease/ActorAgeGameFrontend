@@ -7,6 +7,9 @@ module.exports = {
       spacing: {
         15: '3.75rem', // 15 * 0.25rem = 3.75rem
       },
+      translate: {
+        '-50': '-50%',
+      },
     },
   },
   variants: {
