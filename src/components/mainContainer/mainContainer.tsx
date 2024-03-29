@@ -1,14 +1,13 @@
 import { useEffect, useState } from 'react';
-import { ActorCard } from './actorCard/actorCard';
 import { fetchActorData } from '../../functions/fetchActorData';
 import './style.css';
 import { Actor } from '../../types/types';
-import { Footer } from './footer/footer';
 import { Header } from './header/header';
-import { Loading } from '../Loading/loading';
-import { AnswerResult } from './answerResult/answerResult';
+import { Game } from '../game/game';
+import { Menu } from '../menu/menu';
 
 export const MainContainer = () => {
+  const [showGame, setShowGame] = useState<boolean>(false);
   const [currentActors, setCurrentActors] = useState<Array<Actor>>([]);
   const [nextQuestionActors, setNextQuestionActors] = useState<Array<Actor>>(
     []
@@ -25,7 +24,7 @@ export const MainContainer = () => {
 
   const goToNextQuestion = () => {
     setCurrentActors(nextQuestionActors);
-    setNextQuestionActors([]);
+    // TODO: something to deal with clicking really fast through to the next question, before the next actors are loaded
     setQuestionNotYetAnswered(true);
   };
 
@@ -37,6 +36,7 @@ export const MainContainer = () => {
     setQuestionNotYetAnswered(true);
     setIsLoading(true);
     fetchActorData(null, null, setCurrentActors, setIsLoading);
+    setShowGame(true);
   };
 
   const actor1isOlder = currentActors[0]?.birthday < currentActors[1]?.birthday;
@@ -81,18 +81,18 @@ export const MainContainer = () => {
     // fetchActorData(null, null, setCurrentActors, setIsLoading);
   };
 
-  useEffect(() => {
-    console.group('useEffect triggered');
-    console.log('currentActors', currentActors);
-    console.log('questionNotYetAnswered', questionNotYetAnswered);
-    // if (currentActors.length === 0 || !questionNotYetAnswered) {
-    //   console.log('fetchActorData called');
-    //   fetchActorData(null, null, setCurrentActors, setIsLoading);
-    //   setQuestionNotYetAnswered(true);
-    // }
-    startNewGame();
-    console.groupEnd();
-  }, []);
+  // useEffect(() => {
+  //   console.group('useEffect triggered');
+  //   console.log('currentActors', currentActors);
+  //   console.log('questionNotYetAnswered', questionNotYetAnswered);
+  //   // if (currentActors.length === 0 || !questionNotYetAnswered) {
+  //   //   console.log('fetchActorData called');
+  //   //   fetchActorData(null, null, setCurrentActors, setIsLoading);
+  //   //   setQuestionNotYetAnswered(true);
+  //   // }
+  //   startNewGame();
+  //   console.groupEnd();
+  // }, []);
 
   return (
     <div
@@ -103,56 +103,27 @@ export const MainContainer = () => {
     items-center 
     justify-between
     h-screen
+    w-screen
     "
     >
       <Header />
-      <div
-        id="actor-cards"
-        className="flex-col 
-        justify-center 
-        items-center 
-        h-[85vh]
-        bg-lime-900
-        relative
-        "
-      >
-        {currentActors && currentActors[0] && !isLoading ? (
-          <ActorCard
-            data={currentActors[0]}
-            onClick={() => handleClickActorCard(0)}
-            age={currentActors[0].birthday}
-            questionNotYetAnswered={questionNotYetAnswered}
-          />
-        ) : (
-          <Loading />
-        )}
-        {currentActors && currentActors[1] && !isLoading ? (
-          <ActorCard
-            data={currentActors[1]}
-            onClick={() => handleClickActorCard(1)}
-            age={currentActors[1].birthday}
-            questionNotYetAnswered={questionNotYetAnswered}
-          />
-        ) : (
-          <Loading />
-        )}
 
-        {showAnswerScreen ? (
-          <>
-            <AnswerResult
-              goToNextQuestion={goToNextQuestion}
-              lastAnswer={lastAnswer}
-              currentScore={currentScore}
-              startNewGame={startNewGame}
-            />
-          </>
-        ) : null}
-      </div>
-      <Footer
-        questionNotYetAnswered={questionNotYetAnswered}
-        currentScore={currentScore}
-        lastAnswer={lastAnswer}
-      />
+      {showGame ? (
+        <Game
+          currentActors={currentActors}
+          isLoading={isLoading}
+          questionNotYetAnswered={questionNotYetAnswered}
+          lastAnswer={lastAnswer}
+          currentScore={currentScore}
+          showAnswerScreen={showAnswerScreen}
+          handleClickActorCard={handleClickActorCard}
+          goToNextQuestion={goToNextQuestion}
+          startNewGame={startNewGame}
+          setShowGame={setShowGame}
+        />
+      ) : (
+        <Menu startNewGame={startNewGame} />
+      )}
     </div>
   );
 };

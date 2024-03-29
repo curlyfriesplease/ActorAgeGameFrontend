@@ -6,7 +6,7 @@ export const fetchActorData = (
   setActors: React.Dispatch<React.SetStateAction<Array<Actor>>>,
   setIsLoading: React.Dispatch<React.SetStateAction<boolean>>
 ) => {
-  console.log('hello from fetchActorData');
+  console.log('fetchActorData called');
   fetch('https://39gvqht805.execute-api.eu-west-2.amazonaws.com/v1/actors', {
     method: 'POST',
     headers: {
@@ -33,7 +33,7 @@ export const fetchActorData = (
         'birthday' in jsonObject[1] &&
         jsonObject[1].birthday !== null
       ) {
-        console.log('both actors have birthdays');
+        console.log('Successful data fetch: both actors have birthdays');
         setActors(jsonObject);
       } else {
         console.log(

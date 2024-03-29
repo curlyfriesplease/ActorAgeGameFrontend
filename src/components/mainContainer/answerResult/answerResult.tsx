@@ -2,12 +2,12 @@ export const AnswerResult = ({
   goToNextQuestion,
   lastAnswer,
   currentScore,
-  startNewGame,
+  setShowGame,
 }: {
   goToNextQuestion: () => void;
   lastAnswer: boolean;
   currentScore: number;
-  startNewGame: () => void;
+  setShowGame: (showGame: boolean) => void;
 }) => {
   console.log(lastAnswer, ' answerResult lastAnswer');
   return (
@@ -44,7 +44,9 @@ export const AnswerResult = ({
       {!lastAnswer && (
         <>
           <p className="bg-lime-500">Final score: {currentScore}</p>
-          <p onClick={() => startNewGame()}>Start new game</p>
+          <p className="bg-lime-500" onClick={() => setShowGame(false)}>
+            Close
+          </p>
         </>
       )}
     </div>
