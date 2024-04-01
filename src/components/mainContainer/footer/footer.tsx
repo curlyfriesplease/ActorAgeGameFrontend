@@ -9,7 +9,6 @@ export const Footer = ({
   currentScore: number;
   lastAnswer: boolean;
 }) => {
-  console.log(questionNotYetAnswered, 'questionNotYetAnswered');
   return (
     <div
       id="footer"

@@ -38,15 +38,15 @@ export const MainContainer = () => {
           templates[questionTemplateInUse][questionNumber + 1][1]
       );
       console.groupEnd();
-      1;
-      fetchActorData(
+      return fetchActorData(
         templates[questionTemplateInUse][questionNumber + 1][0],
         templates[questionTemplateInUse][questionNumber + 1][1],
         setNextQuestionActors,
         setIsLoading
       );
     }
-    fetchActorData(null, null, setNextQuestionActors, setIsLoading);
+    console.log('fetching random actors!!');
+    return fetchActorData(null, null, setNextQuestionActors, setIsLoading);
   };
 
   const goToNextQuestion = () => {
@@ -73,7 +73,6 @@ export const MainContainer = () => {
         fetchActorData(null, null, setCurrentActors, setIsLoading);
         break;
       case 'topStars':
-        console.log('topStars:', topStars);
         fetchActorData(
           topStars.default[0][0],
           topStars.default[0][1],

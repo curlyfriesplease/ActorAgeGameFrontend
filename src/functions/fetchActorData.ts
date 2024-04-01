@@ -6,7 +6,7 @@ export const fetchActorData = (
   setActors: React.Dispatch<React.SetStateAction<Array<Actor>>>,
   setIsLoading: React.Dispatch<React.SetStateAction<boolean>>
 ) => {
-  console.log('fetchActorData called');
+  console.log('fetchActorData called with actor1:', actor1, 'actor2:', actor2);
   fetch('https://39gvqht805.execute-api.eu-west-2.amazonaws.com/v1/actors', {
     method: 'POST',
     headers: {
@@ -18,7 +18,6 @@ export const fetchActorData = (
     }),
   })
     .then((response) => {
-      console.log('response', response);
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
@@ -39,6 +38,7 @@ export const fetchActorData = (
         console.log(
           '🔴 at least one actor does not have a birthday, fetching again'
         );
+        console.log('💪 fetching random actor data....');
         fetchActorData(null, null, setActors, setIsLoading);
       }
     })
