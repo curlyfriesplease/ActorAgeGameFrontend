@@ -13,7 +13,6 @@ export const Game = ({
   showAnswerScreen,
   handleClickActorCard,
   goToNextQuestion,
-  startNewGame,
   setShowGame,
 }: {
   currentActors: Array<Actor>;

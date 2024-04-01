@@ -1,10 +1,14 @@
-export const Menu = ({ startNewGame }: { startNewGame: () => void }) => {
+export const Menu = ({
+  startNewGame,
+}: {
+  startNewGame: (gameType: string) => void;
+}) => {
   return (
     <div
       id="menu"
       className="
         absolute 
-        top-1/2 
+        top-1/2                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
         left-1/2 
         -translate-x-1/2 
         -translate-y-1/2 
@@ -16,8 +20,12 @@ export const Menu = ({ startNewGame }: { startNewGame: () => void }) => {
         items-center
         "
     >
-      <p className="bg-lime-500" onClick={() => startNewGame()}>
-        Start new game
+      <p className="bg-lime-500" onClick={() => startNewGame('random')}>
+        Start new random game
+      </p>
+      <br />
+      <p className="bg-lime-500" onClick={() => startNewGame('topStars')}>
+        Start new Top Stars game
       </p>
     </div>
   );

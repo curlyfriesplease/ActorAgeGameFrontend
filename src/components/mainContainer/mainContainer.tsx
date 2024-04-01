@@ -5,6 +5,11 @@ import { Actor } from '../../types/types';
 import { Header } from './header/header';
 import { Game } from '../game/game';
 import { Menu } from '../menu/menu';
+import * as topStars from '../../gameTemplates/topStars.json';
+
+const templates = {
+  topStars: topStars.default,
+};
 
 export const MainContainer = () => {
   const [showGame, setShowGame] = useState<boolean>(false);
@@ -17,25 +22,68 @@ export const MainContainer = () => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [questionNotYetAnswered, setQuestionNotYetAnswered] =
     useState<boolean>(false);
+  const [questionTemplateInUse, setQuestionTemplateInUse] =
+    useState<string>('random');
+  const [questionNumber, setQuestionNumber] = useState<number>(0);
 
   const preLoadNextQuestionActors = () => {
+    console.log('preLoadNextQuestionActors called');
+    console.log('questionTemplateInUse:', questionTemplateInUse);
+    if (questionTemplateInUse !== 'random') {
+      console.group('OH DEAR');
+      console.log(
+        'fetching actors' +
+          templates[questionTemplateInUse][questionNumber + 1][0] +
+          ' and ' +
+          templates[questionTemplateInUse][questionNumber + 1][1]
+      );
+      console.groupEnd();
+      1;
+      fetchActorData(
+        templates[questionTemplateInUse][questionNumber + 1][0],
+        templates[questionTemplateInUse][questionNumber + 1][1],
+        setNextQuestionActors,
+        setIsLoading
+      );
+    }
     fetchActorData(null, null, setNextQuestionActors, setIsLoading);
   };
 
   const goToNextQuestion = () => {
+    console.log('questionTemplateInUse:', questionTemplateInUse);
     setCurrentActors(nextQuestionActors);
     // TODO: something to deal with clicking really fast through to the next question, before the next actors are loaded
     setQuestionNotYetAnswered(true);
+    if (questionTemplateInUse !== 'random') {
+      setQuestionNumber((prev) => prev + 1);
+    }
   };
 
-  const startNewGame = () => {
+  const startNewGame = (gameType: string) => {
+    console.log('the gameType is:', gameType);
+    setQuestionTemplateInUse(gameType);
     setCurrentScore(0);
     setCurrentActors([]);
     setNextQuestionActors([]);
     setLastAnswer(false);
     setQuestionNotYetAnswered(true);
     setIsLoading(true);
-    fetchActorData(null, null, setCurrentActors, setIsLoading);
+    switch (gameType) {
+      case 'random':
+        fetchActorData(null, null, setCurrentActors, setIsLoading);
+        break;
+      case 'topStars':
+        console.log('topStars:', topStars);
+        fetchActorData(
+          topStars.default[0][0],
+          topStars.default[0][1],
+          setCurrentActors,
+          setIsLoading
+        );
+        break;
+      default:
+        console.error('gameType not recognised, gametype:', gameType);
+    }
     setShowGame(true);
   };
 
