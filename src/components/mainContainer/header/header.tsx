@@ -10,7 +10,7 @@ export const Header = () => {
     flex 
     items-center 
     justify-center
-    bg-blue-700 
+    pt-4
     rounded p-1
     "
     >

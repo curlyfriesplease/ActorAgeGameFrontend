@@ -10,6 +10,9 @@ module.exports = {
       translate: {
         '-50': '-50%',
       },
+      borderRadius: {
+        '5xl': '5rem',
+      },
     },
   },
   variants: {

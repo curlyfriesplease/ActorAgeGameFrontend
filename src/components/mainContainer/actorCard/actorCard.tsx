@@ -27,21 +27,29 @@ export const ActorCard = ({
       id="actor-card"
       onClick={onClick}
       className="
-      outline-dashed 
-      outline-2 
-      outline-offset-2 
       p-2
       flex 
       flex-col 
       justify-center 
       items-center 
       h-[50%]
+      p-1
       "
     >
       {!data ? (
         <p>Loading....</p>
       ) : (
-        <div id="actorCardInnerContainer" className="relative h-full">
+        <div
+          id="actorCardInnerContainer"
+          className="
+        relative 
+        h-full
+        rounded-5xl
+        overflow-hidden
+        border-stone-500
+        border-8
+        "
+        >
           <div
             id="imageContainer"
             className="
@@ -60,7 +68,6 @@ export const ActorCard = ({
               }
               alt={data?.name}
               className="
-              rounded-full
               object-contain
               max-h-full
               "
@@ -70,11 +77,13 @@ export const ActorCard = ({
             id="actorName"
             className="
             absolute 
-            bottom-0 
+            bottom-5 
             left-0 
             right-0 
             bg-fuchsia-500 
-            rounded p-2
+            rounded-lg 
+            p-2
+            m-6
             "
           >
             <p>{data?.name}</p>

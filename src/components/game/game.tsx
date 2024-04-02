@@ -34,7 +34,6 @@ export const Game = ({
     justify-center 
     items-center 
     h-[85vh]
-    bg-lime-900
     relative
     "
       >

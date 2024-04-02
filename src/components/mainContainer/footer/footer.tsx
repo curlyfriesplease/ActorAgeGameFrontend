@@ -13,10 +13,9 @@ export const Footer = ({
     <div
       id="footer"
       className="
-        h-[5vh] 
+        h-[3vh] 
         w-[100vw]
         max-h-[100px] 
-        bg-blue-700 
         rounded p-1
         relative
         "
