@@ -1,4 +1,5 @@
 import { Actor } from '../../../types/types';
+import { ShimmerButton } from '../../buttons/shimmerButton';
 
 export const ActorCard = ({
   data,
@@ -73,22 +74,8 @@ export const ActorCard = ({
               "
             />
           </div>
-          <div
-            id="actorName"
-            className="
-            absolute 
-            bottom-5 
-            left-0 
-            right-0 
-            bg-fuchsia-500 
-            rounded-lg 
-            p-2
-            m-6
-            "
-          >
-            <p>{data?.name}</p>
-            {/* <p>{data?.birthday}</p> */}
-          </div>
+
+          <ShimmerButton text={data?.name} />
 
           {!questionNotYetAnswered && (
             <div
