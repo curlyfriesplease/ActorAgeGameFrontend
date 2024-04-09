@@ -1,5 +1,6 @@
 import { Actor } from '../../../types/types';
 import { ShimmerButton } from '../../buttons/shimmerButton';
+import { useEffect } from 'react';
 
 export const ActorCard = ({
   data,
@@ -23,34 +24,46 @@ export const ActorCard = ({
     return ageAsInteger;
   };
 
+  useEffect(() => {
+    const element = document.querySelector('.animate-shimmery');
+    const handleAnimationStart = (event) => {
+      if (event.animationName === 'shimmery') {
+        console.log('Shimmery animation started');
+      }
+    };
+
+    if (element) {
+      element.addEventListener('animationstart', handleAnimationStart);
+    }
+
+    // Clean up function
+    return () => {
+      if (element) {
+        element.removeEventListener('animationstart', handleAnimationStart);
+      }
+    };
+  }, []);
+
   return (
     <div
       id="actor-card"
       onClick={onClick}
       className="
+      outline-dashed 
+      outline-2 
+      outline-offset-2 
       p-2
       flex 
       flex-col 
       justify-center 
       items-center 
       h-[50%]
-      p-1
       "
     >
       {!data ? (
         <p>Loading....</p>
       ) : (
-        <div
-          id="actorCardInnerContainer"
-          className="
-        relative 
-        h-full
-        rounded-5xl
-        overflow-hidden
-        border-stone-500
-        border-8
-        "
-        >
+        <div id="actorCardInnerContainer" className="relative h-full">
           <div
             id="imageContainer"
             className="
@@ -69,13 +82,25 @@ export const ActorCard = ({
               }
               alt={data?.name}
               className="
+              rounded-full
               object-contain
               max-h-full
               "
             />
           </div>
 
-          <ShimmerButton text={data?.name} />
+          <div
+            id="actorName"
+            className="
+            absolute 
+            bottom-3 
+            left-0 
+            right-0 
+            rounded p-2 
+            "
+          >
+            {data?.name && <ShimmerButton text={data?.name} />}
+          </div>
 
           {!questionNotYetAnswered && (
             <div

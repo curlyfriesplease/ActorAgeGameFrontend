@@ -2,7 +2,7 @@
 export default {
   purge: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
   content: [
-    './src/**/*.{js,jsx,ts,tsx}',
+    './src/**/*.{js,jsx,ts,tsx,mdx}',
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
@@ -20,10 +20,10 @@ export default {
         '5xl': '5rem',
       },
       animation: {
-        shimmer: 'shimmer 2s linear infinite',
+        shimmer: 'shimmery 4s linear infinite',
       },
       keyframes: {
-        shimmer: {
+        shimmery: {
           from: {
             backgroundPosition: '0 0',
           },
@@ -33,9 +33,9 @@ export default {
         },
       },
     },
-    variants: {
-      extend: {},
-    },
-    plugins: [],
   },
+  variants: {
+    extend: {},
+  },
+  plugins: [],
 };

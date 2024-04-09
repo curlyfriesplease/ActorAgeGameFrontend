@@ -9,9 +9,10 @@ export const ShimmerButton = ({ text }: { text: string }) => {
       items-center 
       justify-center 
       rounded-md border
-      border-slate-800 
+      border-slate-600 
       bg-[linear-gradient(110deg,#000103,45%,#1e2631,55%,#000103)] 
-      bg-[200% 100%]  
+      bg-[200% 120%]  
+      bg-no-repeat
       px-6 
       font-medium 
       text-slate-400 
