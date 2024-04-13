@@ -118,13 +118,14 @@ export const ActorCard = ({
             "
             >
               <SparklesCore
-                id="tsParticlesActorAge"
+                id={`tsParticlesActorAge-${data?.id}`}
                 background="transparent"
                 minSize={0.7}
                 maxSize={2.2}
                 particleDensity={100}
                 className="w-full h-full"
                 particleColor="#3b82f6"
+                speed={5}
               />
               <div
                 id="agePositioningContainer"
