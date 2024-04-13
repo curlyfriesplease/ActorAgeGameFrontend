@@ -1,6 +1,7 @@
 import { Actor } from '../../../types/types';
 import { ShimmerButton } from '../../buttons/shimmerButton';
 import { useEffect } from 'react';
+import { SparklesCore } from '../../effects/sparkles';
 
 export const ActorCard = ({
   data,
@@ -58,6 +59,7 @@ export const ActorCard = ({
       justify-center 
       items-center 
       h-[50%]
+      relative
       "
     >
       {!data ? (
@@ -107,13 +109,42 @@ export const ActorCard = ({
               id="actorAge"
               className="
             absolute 
-            bottom-15 
-            right-3 
-            bg-fuchsia-500 
+            top-1/2 
+            -translate-y-1/2 
+            left-[-3rem] 
             rounded p-2
+            w-24
+            h-24
             "
             >
-              <p>{getAge(age)}</p>
+              <SparklesCore
+                id="tsParticlesActorAge"
+                background="transparent"
+                minSize={0.7}
+                maxSize={2.2}
+                particleDensity={100}
+                className="w-full h-full"
+                particleColor="#3b82f6"
+              />
+              <div
+                id="agePositioningContainer"
+                className="
+                top-1/2 
+                left-1/2 
+                -translate-x-1/2 
+                -translate-y-1/2 
+                z-10
+                flex
+                flex-col
+                justify-center 
+                items-center 
+                w-full 
+                h-full
+                absolute
+              "
+              >
+                <p>{getAge(age)}</p>
+              </div>
             </div>
           )}
         </div>

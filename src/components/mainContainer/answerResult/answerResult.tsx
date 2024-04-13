@@ -1,3 +1,5 @@
+import { SparklesCore } from '../../effects/sparkles';
+
 export const AnswerResult = ({
   goToNextQuestion,
   lastAnswer,
@@ -26,29 +28,53 @@ export const AnswerResult = ({
       flex-col
       justify-center
       items-center
+      w-[90%]
+      h-[40%]
+      rounded-full
       "
       onClick={() => {
         if (lastAnswer) goToNextQuestion();
       }}
     >
-      <p
-        className="h-6 
-      p-0 
-      w-[40%]
-      bg-lime-500 
-      "
+      <SparklesCore
+        id="tsParticlesAnswerResult"
+        background="transparent"
+        minSize={0.9}
+        maxSize={2.5}
+        particleDensity={100}
+        className="w-full h-full"
+        particleColor="#fda4af"
+      />
+      <div
+        className="
+        flex
+        flex-col
+        justify-center 
+        items-center 
+        w-full 
+        h-full
+        absolute
+        "
       >
-        {lastAnswer ? 'Correct!' : 'Wrong!'}
-      </p>
+        <p
+          className="
+        h-6 
+        p-0 
+        text-slate-900
+      "
+        >
+          {lastAnswer ? 'Correct!' : 'Wrong!'}
+        </p>
 
-      {!lastAnswer && (
-        <>
-          <p className="bg-lime-500">Final score: {currentScore}</p>
-          <p className="bg-lime-500" onClick={() => setShowGame(false)}>
-            Close
-          </p>
-        </>
-      )}
+        {!lastAnswer && (
+          <>
+            <p className="bg-lime-500">Final score: {currentScore}</p>
+            <p className="bg-lime-500" onClick={() => setShowGame(false)}>
+              Close
+            </p>
+          </>
+        )}
+      </div>
     </div>
   );
 };
