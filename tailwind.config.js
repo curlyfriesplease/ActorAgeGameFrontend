@@ -10,6 +10,19 @@ export default {
   darkMode: 'class',
   theme: {
     extend: {
+      fontFamily: {
+        honk: ['"Honk"', 'system-ui'],
+        jersey: ['"Jersey 15"', 'sans-serif'],
+      },
+      fontSize: {
+        honk: [
+          '1rem',
+          {
+            'font-variation-settings': '"MORF" 15, "SHLN" 50',
+            fontFamily: '"Honk", system-ui',
+          },
+        ],
+      },
       spacing: {
         15: '3.75rem', // 15 * 0.25rem = 3.75rem
       },

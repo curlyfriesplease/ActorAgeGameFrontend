@@ -3,19 +3,20 @@ export const FloatingScore = ({ currentScore }: { currentScore: number }) => {
     <div
       className="
       id='floatingScore'
-      text-emerald-400 
       absolute 
-      text-lg
+      bottom-1
       left-3
-      -translate-y-15
-      max-w-[100px]
-      w-[15%]
+      max-w-[140px]
+      max-h-[140px]
+      w-[20%]
       wrap-text
-      bg-amber-700
+      font-jersey
+      rounded-full
+      backdrop-blur-xl
       "
     >
-      <h4>Score:</h4>
-      <h4>{currentScore}</h4>
+      <h4 className="text-2xl text-neutral-100">SCORE</h4>
+      <h4 className="text-5xl">{currentScore}</h4>
     </div>
   );
 };

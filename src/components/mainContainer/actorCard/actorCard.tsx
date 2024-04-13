@@ -50,9 +50,6 @@ export const ActorCard = ({
       id="actor-card"
       onClick={onClick}
       className="
-      outline-dashed 
-      outline-2 
-      outline-offset-2 
       p-2
       flex 
       flex-col 
@@ -84,7 +81,7 @@ export const ActorCard = ({
               }
               alt={data?.name}
               className="
-              rounded-full
+              rounded-[120px]
               object-contain
               max-h-full
               "
@@ -111,21 +108,23 @@ export const ActorCard = ({
             absolute 
             top-1/2 
             -translate-y-1/2 
-            left-[-3rem] 
-            rounded p-2
-            w-24
-            h-24
+            left-[-5rem] 
+            rounded 
+            p-0
+            w-36
+            h-36
+            rounded-full
             "
             >
               <SparklesCore
                 id={`tsParticlesActorAge-${data?.id}`}
                 background="transparent"
-                minSize={0.7}
-                maxSize={2.2}
+                minSize={1.2}
+                maxSize={3.2}
                 particleDensity={100}
                 className="w-full h-full"
                 particleColor="#3b82f6"
-                speed={5}
+                speed={8}
               />
               <div
                 id="agePositioningContainer"
@@ -135,6 +134,7 @@ export const ActorCard = ({
                 -translate-x-1/2 
                 -translate-y-1/2 
                 z-10
+                -rotate-30
                 flex
                 flex-col
                 justify-center 
@@ -142,6 +142,9 @@ export const ActorCard = ({
                 w-full 
                 h-full
                 absolute
+                font-honk
+                font-normal
+                text-6xl
               "
               >
                 <p>{getAge(age)}</p>

@@ -34,6 +34,7 @@ export const AnswerResult = ({
       "
       onClick={() => {
         if (lastAnswer) goToNextQuestion();
+        else if (!lastAnswer) setShowGame(false);
       }}
     >
       <SparklesCore
@@ -54,26 +55,21 @@ export const AnswerResult = ({
         w-full 
         h-full
         absolute
+        font-honk
+        font-normal
         "
       >
         <p
           className="
-        h-6 
+        h-24
         p-0 
-        text-slate-900
+        text-8xl
       "
         >
           {lastAnswer ? 'Correct!' : 'Wrong!'}
         </p>
 
-        {!lastAnswer && (
-          <>
-            <p className="bg-lime-500">Final score: {currentScore}</p>
-            <p className="bg-lime-500" onClick={() => setShowGame(false)}>
-              Close
-            </p>
-          </>
-        )}
+        {!lastAnswer && <p className="text-5xl">Final score: {currentScore}</p>}
       </div>
     </div>
   );
