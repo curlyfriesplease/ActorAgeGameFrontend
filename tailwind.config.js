@@ -33,7 +33,7 @@ export default {
         '5xl': '5rem',
       },
       animation: {
-        shimmer: 'shimmery 4s linear infinite',
+        shimmer: 'shimmery 2s linear infinite',
       },
       keyframes: {
         shimmery: {

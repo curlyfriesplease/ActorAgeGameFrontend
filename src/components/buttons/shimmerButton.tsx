@@ -5,7 +5,6 @@ export const ShimmerButton = ({ text }: { text: string }) => {
       className="
       inline-flex 
       h-12 
-      animate-shimmer 
       items-center 
       justify-center 
       rounded-md border
@@ -20,7 +19,9 @@ export const ShimmerButton = ({ text }: { text: string }) => {
       focus:outline-none focus:ring-2 
       focus:ring-slate-400
       focus:ring-offset-2   
-      focus:ring-offset-slate-50"
+      focus:ring-offset-slate-50
+      animate-shimmer
+      "
     >
       {text}
     </div>

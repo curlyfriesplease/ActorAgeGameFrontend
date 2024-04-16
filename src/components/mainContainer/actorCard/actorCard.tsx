@@ -1,6 +1,7 @@
 import { Actor } from '../../../types/types';
-import { ShimmerButton } from '../../buttons/shimmerButton';
-import { useEffect } from 'react';
+// import { ShimmerButton } from '../../buttons/shimmerButton';
+import { ConnectButton } from '../../buttons/connectButton';
+// import { useEffect } from 'react';
 import { SparklesCore } from '../../effects/sparkles';
 
 export const ActorCard = ({
@@ -25,25 +26,25 @@ export const ActorCard = ({
     return ageAsInteger;
   };
 
-  useEffect(() => {
-    const element = document.querySelector('.animate-shimmery');
-    const handleAnimationStart = (event) => {
-      if (event.animationName === 'shimmery') {
-        console.log('Shimmery animation started');
-      }
-    };
+  // useEffect(() => {
+  //   const element = document.querySelector('.animate-shimmery');
+  //   const handleAnimationStart = (event) => {
+  //     if (event.animationName === 'shimmery') {
+  //       console.log('Shimmery animation started');
+  //     }
+  //   };
 
-    if (element) {
-      element.addEventListener('animationstart', handleAnimationStart);
-    }
+  //   if (element) {
+  //     element.addEventListener('animationstart', handleAnimationStart);
+  //   }
 
-    // Clean up function
-    return () => {
-      if (element) {
-        element.removeEventListener('animationstart', handleAnimationStart);
-      }
-    };
-  }, []);
+  //   // Clean up function
+  //   return () => {
+  //     if (element) {
+  //       element.removeEventListener('animationstart', handleAnimationStart);
+  //     }
+  //   };
+  // }, []);
 
   return (
     <div
@@ -87,19 +88,20 @@ export const ActorCard = ({
               "
             />
           </div>
-
-          <div
-            id="actorName"
-            className="
+          {data?.name && (
+            <div
+              id="actorName"
+              className="
             absolute 
-            bottom-3 
+            bottom-5 
             left-0 
             right-0 
             rounded p-2 
             "
-          >
-            {data?.name && <ShimmerButton text={data?.name} />}
-          </div>
+            >
+              <ConnectButton text={data?.name} />
+            </div>
+          )}
 
           {!questionNotYetAnswered && (
             <div
