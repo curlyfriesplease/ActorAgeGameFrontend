@@ -23,7 +23,7 @@ export const Game = ({
   showAnswerScreen: boolean;
   handleClickActorCard: (choice: number) => void;
   goToNextQuestion: () => void;
-  startNewGame: () => void;
+  startNewGame: (gameType: string) => void;
   setShowGame: (showGame: boolean) => void;
 }) => {
   return (
