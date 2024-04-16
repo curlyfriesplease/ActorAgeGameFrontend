@@ -3,6 +3,7 @@ import { Footer } from '../mainContainer/footer/footer';
 import { ActorCard } from '../mainContainer/actorCard/actorCard';
 import { AnswerResult } from '../mainContainer/answerResult/answerResult';
 import { Loading } from '../Loading/loading';
+import { motion, AnimatePresence } from 'framer-motion';
 
 export const Game = ({
   currentActors,
@@ -39,18 +40,54 @@ export const Game = ({
       >
         {currentActors && currentActors[0] && currentActors[1] && !isLoading ? (
           <>
-            <ActorCard
-              data={currentActors[0]}
-              onClick={() => handleClickActorCard(0)}
-              age={currentActors[0].birthday}
-              questionNotYetAnswered={questionNotYetAnswered}
-            />
-            <ActorCard
-              data={currentActors[1]}
-              onClick={() => handleClickActorCard(1)}
-              age={currentActors[1].birthday}
-              questionNotYetAnswered={questionNotYetAnswered}
-            />
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentActors[0].id}
+                initial={{ x: 500, opacity: 0 }}
+                animate={{
+                  x: 0,
+                  opacity: 1,
+                  transition: { duration: 0.3 },
+                }}
+                exit={{ x: -500, opacity: 0, transition: { duration: 0.5 } }}
+                className="
+              h-[50%]
+              w-full
+              "
+                id="actor-card-0-motion-div"
+              >
+                <ActorCard
+                  data={currentActors[0]}
+                  onClick={() => handleClickActorCard(0)}
+                  age={currentActors[0].birthday}
+                  questionNotYetAnswered={questionNotYetAnswered}
+                />
+              </motion.div>
+            </AnimatePresence>
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentActors[1].id}
+                initial={{ x: 500, opacity: 0 }}
+                animate={{
+                  x: 0,
+                  opacity: 1,
+                  transition: { duration: 0.35 },
+                }}
+                exit={{ x: -500, opacity: 0, transition: { duration: 0.6 } }}
+                className="
+              h-[50%]
+              w-full
+              "
+                id="actor-card-1-motion-div"
+              >
+                <ActorCard
+                  data={currentActors[1]}
+                  onClick={() => handleClickActorCard(1)}
+                  age={currentActors[1].birthday}
+                  questionNotYetAnswered={questionNotYetAnswered}
+                />
+              </motion.div>
+            </AnimatePresence>
           </>
         ) : (
           <Loading />

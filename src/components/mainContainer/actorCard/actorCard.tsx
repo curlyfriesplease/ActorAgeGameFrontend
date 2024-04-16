@@ -36,7 +36,7 @@ export const ActorCard = ({
       flex-col 
       justify-center 
       items-center 
-      h-[50%]
+      h-full
       relative
       "
     >
