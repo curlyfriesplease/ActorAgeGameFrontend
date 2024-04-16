@@ -31,29 +31,27 @@ export const Game = ({
       <div
         id="actor-cards"
         className="flex-col 
-    justify-center 
-    items-center 
-    h-[85vh]
-    relative
-    "
+        justify-center 
+        items-center 
+        h-[85vh]
+        relative
+        "
       >
-        {currentActors && currentActors[0] && !isLoading ? (
-          <ActorCard
-            data={currentActors[0]}
-            onClick={() => handleClickActorCard(0)}
-            age={currentActors[0].birthday}
-            questionNotYetAnswered={questionNotYetAnswered}
-          />
-        ) : (
-          <Loading />
-        )}
-        {currentActors && currentActors[1] && !isLoading ? (
-          <ActorCard
-            data={currentActors[1]}
-            onClick={() => handleClickActorCard(1)}
-            age={currentActors[1].birthday}
-            questionNotYetAnswered={questionNotYetAnswered}
-          />
+        {currentActors && currentActors[0] && currentActors[1] && !isLoading ? (
+          <>
+            <ActorCard
+              data={currentActors[0]}
+              onClick={() => handleClickActorCard(0)}
+              age={currentActors[0].birthday}
+              questionNotYetAnswered={questionNotYetAnswered}
+            />
+            <ActorCard
+              data={currentActors[1]}
+              onClick={() => handleClickActorCard(1)}
+              age={currentActors[1].birthday}
+              questionNotYetAnswered={questionNotYetAnswered}
+            />
+          </>
         ) : (
           <Loading />
         )}
