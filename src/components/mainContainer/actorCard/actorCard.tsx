@@ -2,7 +2,7 @@ import { Actor } from '../../../types/types';
 // import { ShimmerButton } from '../../buttons/shimmerButton';
 import { ConnectButton } from '../../buttons/connectButton';
 // import { useEffect } from 'react';
-import { SparklesCore } from '../../effects/sparkles';
+import { ActorAge } from './actorAge';
 
 export const ActorCard = ({
   data,
@@ -25,26 +25,6 @@ export const ActorCard = ({
     }
     return ageAsInteger;
   };
-
-  // useEffect(() => {
-  //   const element = document.querySelector('.animate-shimmery');
-  //   const handleAnimationStart = (event) => {
-  //     if (event.animationName === 'shimmery') {
-  //       console.log('Shimmery animation started');
-  //     }
-  //   };
-
-  //   if (element) {
-  //     element.addEventListener('animationstart', handleAnimationStart);
-  //   }
-
-  //   // Clean up function
-  //   return () => {
-  //     if (element) {
-  //       element.removeEventListener('animationstart', handleAnimationStart);
-  //     }
-  //   };
-  // }, []);
 
   return (
     <div
@@ -104,54 +84,7 @@ export const ActorCard = ({
           )}
 
           {!questionNotYetAnswered && (
-            <div
-              id="actorAge"
-              className="
-            absolute 
-            top-1/2 
-            -translate-y-1/2 
-            left-[-5rem] 
-            rounded 
-            p-0
-            w-36
-            h-36
-            rounded-full
-            "
-            >
-              <SparklesCore
-                id={`tsParticlesActorAge-${data?.id}`}
-                background="transparent"
-                minSize={1.2}
-                maxSize={3.2}
-                particleDensity={100}
-                className="w-full h-full"
-                particleColor="#3b82f6"
-                speed={8}
-              />
-              <div
-                id="agePositioningContainer"
-                className="
-                top-1/2 
-                left-1/2 
-                -translate-x-1/2 
-                -translate-y-1/2 
-                z-10
-                -rotate-30
-                flex
-                flex-col
-                justify-center 
-                items-center 
-                w-full 
-                h-full
-                absolute
-                font-honk
-                font-normal
-                text-6xl
-              "
-              >
-                <p>{getAge(age)}</p>
-              </div>
-            </div>
+            <ActorAge age={getAge(age)} id={data?.id} />
           )}
         </div>
       )}

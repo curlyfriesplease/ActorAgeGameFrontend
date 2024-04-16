@@ -1,4 +1,5 @@
 import { SparklesCore } from '../../effects/sparkles';
+import { StaggeredBounceInLetters } from '../../effects/staggeredBounceInLetters';
 
 export const AnswerResult = ({
   goToNextQuestion,
@@ -59,17 +60,11 @@ export const AnswerResult = ({
         font-normal
         "
       >
-        <p
-          className="
-        h-24
-        p-0 
-        text-8xl
-      "
-        >
-          {lastAnswer ? 'Correct!' : 'Wrong!'}
-        </p>
-
-        {!lastAnswer && <p className="text-5xl">Final score: {currentScore}</p>}
+        <StaggeredBounceInLetters
+          text={lastAnswer ? 'Correct' : 'Wrong'}
+          isVisible={true}
+        />
+        {!lastAnswer && <p className="text-5xl">Score: {currentScore}</p>}
       </div>
     </div>
   );

@@ -13,6 +13,7 @@ export default {
       fontFamily: {
         honk: ['"Honk"', 'system-ui'],
         jersey: ['"Jersey 15"', 'sans-serif'],
+        gabarito: ['"Gabarito"', 'sans-serif'],
       },
       fontSize: {
         honk: [
