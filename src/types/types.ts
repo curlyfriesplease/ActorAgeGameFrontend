@@ -1,6 +1,7 @@
 export type Actor = {
   adult: boolean;
   birthday: string;
+  deathday: string;
   gender: number;
   id: number;
   known_for: Array<{}>;

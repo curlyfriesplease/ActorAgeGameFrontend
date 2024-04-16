@@ -60,6 +60,7 @@ export const Game = ({
                   data={currentActors[0]}
                   onClick={() => handleClickActorCard(0)}
                   age={currentActors[0].birthday}
+                  deathAge={currentActors[0].deathday}
                   questionNotYetAnswered={questionNotYetAnswered}
                 />
               </motion.div>
@@ -84,6 +85,7 @@ export const Game = ({
                   data={currentActors[1]}
                   onClick={() => handleClickActorCard(1)}
                   age={currentActors[1].birthday}
+                  deathAge={currentActors[1].deathday}
                   questionNotYetAnswered={questionNotYetAnswered}
                 />
               </motion.div>

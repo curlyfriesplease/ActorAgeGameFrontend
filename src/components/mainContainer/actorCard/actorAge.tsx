@@ -1,6 +1,16 @@
 import { SparklesCore } from '../../effects/sparkles';
 
-export const ActorAge = ({ age, id }: { age: number; id: number }) => {
+export const ActorAge = ({
+  age,
+  id,
+  deathAge,
+}: {
+  age: number;
+  id: number;
+  deathAge: number;
+}) => {
+  const showDeathInfo = typeof deathAge === 'number' && !isNaN(deathAge);
+
   return (
     <div
       id="actorAge"
@@ -49,7 +59,11 @@ export const ActorAge = ({ age, id }: { age: number; id: number }) => {
         text-6xl
       "
       >
+        {showDeathInfo && <p className="text-xs text-slate-800">Would be</p>}
         <p className="">{age}</p>
+        {showDeathInfo && (
+          <p className="text-xs text-slate-800">died aged {deathAge}</p>
+        )}
       </div>
     </div>
   );

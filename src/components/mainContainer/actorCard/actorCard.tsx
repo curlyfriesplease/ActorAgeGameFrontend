@@ -8,11 +8,13 @@ export const ActorCard = ({
   data,
   onClick,
   age,
+  deathAge,
   questionNotYetAnswered,
 }: {
   data: Actor;
   onClick: () => void;
   age: string;
+  deathAge: string;
   questionNotYetAnswered: boolean;
 }) => {
   const getAge = (ageString: string) => {
@@ -84,7 +86,11 @@ export const ActorCard = ({
           )}
 
           {!questionNotYetAnswered && (
-            <ActorAge age={getAge(age)} id={data?.id} />
+            <ActorAge
+              age={getAge(age)}
+              id={data?.id}
+              deathAge={getAge(deathAge)}
+            />
           )}
         </div>
       )}
