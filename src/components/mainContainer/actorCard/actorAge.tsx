@@ -26,6 +26,8 @@ export const ActorAge = ({
       rounded-full
       bg-gradient-to-r from-yellow-300/20 via-pink-500/70 to-yellow-400/40
       drop-shadow-2xl
+      z-10
+      -rotate-[12deg]
       "
     >
       <SparklesCore
@@ -61,7 +63,7 @@ export const ActorAge = ({
       "
       >
         {showDeathInfo && <p className="text-xs text-slate-800">Would be</p>}
-        <p className="">{age}</p>
+        <p className="z-10">{age}</p>
         {showDeathInfo && (
           <p className="text-xs text-slate-800">died aged {deathAge}</p>
         )}

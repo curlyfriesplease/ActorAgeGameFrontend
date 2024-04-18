@@ -17,7 +17,7 @@ $partSize: 5em;
 	position: relative;
 	width: 10em;
 	height: 10em;
-    z-index: -5;
+    z-index: -10;
 }
 .particle {
 	animation: rise $dur ease-in infinite;
@@ -34,7 +34,7 @@ $partSize: 5em;
       width: 3em;
       height: 3em;
     }
-    z-index: -5;
+    z-index: -10;
 	// spread particles out in time and x-position to get desired effect
 	@for $p from 1 through $parts {
 		&:nth-of-type(#{$p}) {
