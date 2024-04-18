@@ -57,6 +57,7 @@ export const ActorAge = ({
         font-gabarito
         font-normal
         text-6xl
+        z-10
       "
       >
         {showDeathInfo && <p className="text-xs text-slate-800">Would be</p>}

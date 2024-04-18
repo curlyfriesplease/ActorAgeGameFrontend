@@ -1,4 +1,4 @@
-import { clsx } from 'clsx';
+import { Fire } from './fireAnimation/fire';
 
 export const FloatingScore = ({ currentScore }: { currentScore: number }) => {
   const tailwindScoreColor = () => {
@@ -49,7 +49,8 @@ export const FloatingScore = ({ currentScore }: { currentScore: number }) => {
       `}
     >
       <h4 className="text-2xl">SCORE</h4>
-      <h4 className={clsx(tailwindScoreColor(), 'text-5xl')}>{currentScore}</h4>
+      <h4 className="text-5xl">{currentScore}</h4>
+      {currentScore > 3 && <Fire />}
     </div>
   );
 };

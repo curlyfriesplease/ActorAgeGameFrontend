@@ -9,6 +9,9 @@
   --foreground-rgb: 255, 255, 255;
   --background-start-rgb: 255, 190, 147;
   --background-end-rgb: 167, 199, 231;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
 }
 
 #appDiv {
