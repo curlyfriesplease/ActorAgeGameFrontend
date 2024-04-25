@@ -18,6 +18,7 @@ export const ActorCard = ({
   questionNotYetAnswered: boolean;
 }) => {
   const getAge = (ageString: string) => {
+    if (ageString === null) return null;
     const today = new Date();
     const birthDate = new Date(ageString);
     let ageAsInteger = today.getFullYear() - birthDate.getFullYear();
@@ -67,6 +68,8 @@ export const ActorCard = ({
               rounded-[120px]
               object-contain
               max-h-full
+              ring-8
+              ring-neutral-950
               "
             />
           </div>

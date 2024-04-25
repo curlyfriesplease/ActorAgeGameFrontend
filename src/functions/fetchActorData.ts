@@ -33,6 +33,7 @@ export const fetchActorData = (
         jsonObject[1].birthday !== null
       ) {
         console.log('Successful data fetch: both actors have birthdays');
+        console.dir(jsonObject);
         setActors(jsonObject);
       } else {
         console.log(
