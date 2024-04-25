@@ -53,7 +53,7 @@ export const AnswerResult = ({
         flex-col
         justify-center 
         items-center 
-        w-full 
+        w-100vw 
         h-full
         absolute
         font-honk

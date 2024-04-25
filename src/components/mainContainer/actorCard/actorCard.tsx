@@ -1,7 +1,6 @@
 import { Actor } from '../../../types/types';
 // import { ShimmerButton } from '../../buttons/shimmerButton';
 import { ConnectButton } from '../../buttons/connectButton';
-// import { useEffect } from 'react';
 import { ActorAge } from './actorAge';
 
 export const ActorCard = ({

@@ -30,7 +30,6 @@ export const FloatingScore = ({ currentScore }: { currentScore: number }) => {
   };
 
   const scoreColor = tailwindScoreColor();
-  console.log('scoreColor', scoreColor);
   return (
     <div
       id="floatingScore"
