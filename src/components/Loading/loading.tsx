@@ -7,7 +7,7 @@ export const Loading = () => {
         flex-col 
         justify-center 
         items-center 
-        h-[50%]
+        h-full
         "
     >
       <p>Loading....</p>

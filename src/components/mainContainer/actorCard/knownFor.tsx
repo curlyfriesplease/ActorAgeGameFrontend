@@ -4,7 +4,11 @@ import { useState } from 'react';
 import { motion, useTransform, useMotionValue, useSpring } from 'framer-motion';
 import { KnownForData } from '../../../types/types';
 
-export const AnimatedTooltip = ({ items }: { items: KnownForData[] }) => {
+export const KnownForAnimatedTooltip = ({
+  items,
+}: {
+  items: KnownForData[];
+}) => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const springConfig = { stiffness: 100, damping: 5 };
   const x = useMotionValue(0); // going to set this value on mouse move
@@ -74,7 +78,23 @@ export const AnimatedTooltip = ({ items }: { items: KnownForData[] }) => {
             width={100}
             src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
             alt={item.original_title || item.original_name}
-            className="object-cover !m-0 !p-0 object-top rounded-full h-14 w-14 ring-4 ring-neutral-950 group-hover:scale-105 group-hover:z-30 relative transition duration-500"
+            className="
+            object-cover
+             !m-0 
+             !p-0 
+             object-top 
+             rounded-full
+             h-20
+             w-20
+             md:h-28
+             md:w-28
+             ring-4 
+             ring-neutral-950
+             group-hover:scale-105 
+             group-hover:z-30
+             relative 
+             transition 
+             duration-500"
           />
         </div>
       ))}

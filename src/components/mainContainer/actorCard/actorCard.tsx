@@ -1,7 +1,7 @@
 import { Actor } from '../../../types/types';
 import { ConnectButton } from '../../buttons/connectButton';
 import { ActorAge } from './actorAge';
-import { AnimatedTooltip } from './animated-tooltip';
+import { KnownForAnimatedTooltip } from './knownFor';
 
 export const ActorCard = ({
   data,
@@ -102,11 +102,11 @@ export const ActorCard = ({
               top-1/2 
               -translate-y-1/2 
               sm:left-[11rem]
-              left-[50%] 
+              left-[55%] 
               z-1
               "
             >
-              <AnimatedTooltip items={data?.known_for} />
+              <KnownForAnimatedTooltip items={data?.known_for} />
             </div>
 
             {!questionNotYetAnswered && (
