@@ -1,3 +1,25 @@
+import { GameCategoryButton } from '../buttons/gameCategoryButton';
+import { Button } from '../../types/types';
+
+const buttonArray = [
+  {
+    imagePath: '/src/assets/marvlogo.png',
+    label: 'marvel',
+  },
+  {
+    imagePath: '/src/assets/topstars.png',
+    label: 'topstars',
+  },
+  {
+    imagePath: '/src/assets/nineties.png',
+    label: 'nineties',
+  },
+  {
+    imagePath: '/src/assets/random.png',
+    label: 'random',
+  },
+];
+
 export const Menu = ({
   startNewGame,
 }: {
@@ -20,13 +42,13 @@ export const Menu = ({
         items-center
         "
     >
-      <p className="bg-lime-500" onClick={() => startNewGame('random')}>
-        Start new random game
-      </p>
-      <br />
-      <p className="bg-lime-500" onClick={() => startNewGame('topStars')}>
-        Start new Top Stars game
-      </p>
+      {buttonArray.map((button: Button) => (
+        <GameCategoryButton
+          imagePath={button.imagePath}
+          onClick={() => startNewGame(button.label)}
+          id={button.label}
+        />
+      ))}
     </div>
   );
 };

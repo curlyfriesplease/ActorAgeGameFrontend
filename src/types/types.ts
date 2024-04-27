@@ -21,3 +21,8 @@ export type Actor = {
   popularity: number;
   profile_path: string;
 };
+
+export type Button = {
+  imagePath: string;
+  label: string;
+};
