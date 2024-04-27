@@ -27,6 +27,17 @@ export const ActorCard = ({
     }
     return ageAsInteger;
   };
+  const getDeathAge = (birthdayString: string, deathAgeString: string) => {
+    if (deathAgeString === null) return null;
+    const birthDate = new Date(birthdayString);
+    const deathDate = new Date(deathAgeString);
+    let ageAsInteger = deathDate.getFullYear() - birthDate.getFullYear();
+    const m = deathDate.getMonth() - birthDate.getMonth();
+    if (m < 0 || (m === 0 && deathDate.getDate() < birthDate.getDate())) {
+      ageAsInteger--;
+    }
+    return ageAsInteger;
+  };
 
   return (
     <div
@@ -97,12 +108,11 @@ export const ActorCard = ({
               items-center 
               justify-center 
               mb-10 
-              w-full
               absolute 
               top-1/2 
               -translate-y-1/2 
-              sm:left-[11rem]
-              left-[55%] 
+              sm:-right-[18%]
+              -right-[22%] 
               z-1
               "
             >
@@ -113,7 +123,7 @@ export const ActorCard = ({
               <ActorAge
                 age={getAge(age)}
                 id={data?.id}
-                deathAge={getAge(deathAge)}
+                deathAge={getDeathAge(age, deathAge)}
               />
             )}
           </div>

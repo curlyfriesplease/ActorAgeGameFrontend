@@ -66,8 +66,12 @@ export const ActorAge = ({
       "
       >
         {showDeathInfo && <p className="text-xs">Would be</p>}
-        <p className="z-10">{age}</p>
-        {showDeathInfo && <p className="text-xs">died aged {deathAge}</p>}
+        <p id="ageText" className={`z-10 ${showDeathInfo ? 'text-3xl' : ''}`}>
+          {age}
+        </p>
+        {showDeathInfo && (
+          <p className="text-xs w-[90%] ">died aged {deathAge}</p>
+        )}
       </div>
     </div>
   );
