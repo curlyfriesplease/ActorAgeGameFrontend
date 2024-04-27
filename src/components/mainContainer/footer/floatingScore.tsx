@@ -5,27 +5,27 @@ export const FloatingScore = ({ currentScore }: { currentScore: number }) => {
     // Not the most elegant function, but sadly tailwind doesn't support a dynamically generated class name, it only accepts complete unbroken strings https://tailwindcss.com/docs/content-configuration#dynamic-class-names
     switch (currentScore) {
       case 0:
-        return 'text-red-50';
+        return 'text-green-900';
       case 1:
-        return 'text-red-100';
+        return 'text-emerald-900';
       case 2:
-        return 'text-red-200';
+        return 'text-teal-900';
       case 3:
-        return 'text-red-300';
+        return 'text-cyan-900';
       case 4:
-        return 'text-red-400';
+        return 'text-sky-900';
       case 5:
-        return 'text-red-500';
+        return 'text-blue-900';
       case 6:
-        return 'text-red-600';
+        return 'text-indigo-900';
       case 7:
-        return 'text-red-700';
+        return 'text-violet-900';
       case 8:
-        return 'text-red-800';
+        return 'text-slate-900';
       case 9:
-        return 'text-red-900';
+        return 'text-zinc-900';
       default:
-        return 'text-red-950';
+        return 'text-neutral-950';
     }
   };
 
@@ -49,7 +49,7 @@ export const FloatingScore = ({ currentScore }: { currentScore: number }) => {
     >
       <h4 className="text-2xl">SCORE</h4>
       <h4 className="text-5xl">{currentScore}</h4>
-      {currentScore > 3 && <Fire />}
+      {currentScore > 9 && <Fire />}
     </div>
   );
 };
