@@ -18,11 +18,11 @@ export const ActorAge = ({
       absolute 
       top-1/2 
       -translate-y-1/2 
-      left-[-5rem] 
+      left-[-4rem] 
       rounded 
       p-0
-      w-28
-      h-28
+      w-24
+      h-24
       rounded-full
       bg-gradient-to-r from-yellow-300 to-pink-600
       drop-shadow-2xl

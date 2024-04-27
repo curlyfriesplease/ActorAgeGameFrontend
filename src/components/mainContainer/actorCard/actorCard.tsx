@@ -102,7 +102,7 @@ export const ActorCard = ({
               top-1/2 
               -translate-y-1/2 
               sm:left-[11rem]
-              left-[6rem] 
+              left-[50%] 
               z-1
               "
             >
