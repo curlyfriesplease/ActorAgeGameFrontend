@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { fetchActorData } from '../../functions/fetchActorData';
 import './style.css';
 import { Actor } from '../../types/types';
@@ -28,9 +28,11 @@ export const MainContainer = () => {
 
   const preLoadNextQuestionActors = () => {
     console.log('preLoadNextQuestionActors called');
-    console.log('questionTemplateInUse:', questionTemplateInUse);
     if (questionTemplateInUse !== 'random') {
-      console.group('OH DEAR');
+      console.group(
+        'Preloading next question actors from questionTemplateInUse:',
+        questionTemplateInUse
+      );
       console.log(
         'fetching actors' +
           templates[questionTemplateInUse][questionNumber + 1][0] +
@@ -127,19 +129,6 @@ export const MainContainer = () => {
     // setIsLoading(true);
     // fetchActorData(null, null, setCurrentActors, setIsLoading);
   };
-
-  // useEffect(() => {
-  //   console.group('useEffect triggered');
-  //   console.log('currentActors', currentActors);
-  //   console.log('questionNotYetAnswered', questionNotYetAnswered);
-  //   // if (currentActors.length === 0 || !questionNotYetAnswered) {
-  //   //   console.log('fetchActorData called');
-  //   //   fetchActorData(null, null, setCurrentActors, setIsLoading);
-  //   //   setQuestionNotYetAnswered(true);
-  //   // }
-  //   startNewGame();
-  //   console.groupEnd();
-  // }, []);
 
   return (
     <div

@@ -8,7 +8,7 @@ const buttonArray = [
   },
   {
     imagePath: '/src/assets/topstars.png',
-    label: 'topstars',
+    label: 'topStars',
   },
   {
     imagePath: '/src/assets/nineties.png',
