@@ -43,7 +43,6 @@ export const FloatingScore = ({ currentScore }: { currentScore: number }) => {
       wrap-text
       font-jersey
       rounded-full
-      backdrop-blur-xl
       ${scoreColor}
       `}
     >
