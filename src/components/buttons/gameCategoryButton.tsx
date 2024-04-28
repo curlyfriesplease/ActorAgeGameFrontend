@@ -12,13 +12,6 @@ export const GameCategoryButton = ({
       id="game-category-button"
       onClick={onClick}
       className="
-            flex 
-            flex-row 
-            justify-center 
-            items-center 
-            w-[75%]
-            h-[3rem]
-            sm:h-[5rem]
             relative
             bg-gradient-to-br from-yellow-300 to-pink-600
             rounded-full
@@ -26,8 +19,8 @@ export const GameCategoryButton = ({
             ring-neutral-800
             pt-1
             pb-1
-            mt-3
-            mb-3
+            h-full
+            w-full
             "
     >
       <img

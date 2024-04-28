@@ -1,5 +1,6 @@
 import { GameCategoryButton } from '../buttons/gameCategoryButton';
 import { Button } from '../../types/types';
+import { motion } from 'framer-motion';
 
 const buttonArray = [
   {
@@ -25,8 +26,23 @@ export const Menu = ({
 }: {
   startNewGame: (gameType: string) => void;
 }) => {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, x: 40 },
+    show: { opacity: 1, x: 0 },
+  };
+
   return (
-    <div
+    <motion.div
       id="menu"
       className="
         absolute 
@@ -41,14 +57,32 @@ export const Menu = ({
         justify-center
         items-center
         "
+      variants={containerVariants}
+      initial="hidden"
+      animate="show"
     >
       {buttonArray.map((button: Button) => (
-        <GameCategoryButton
-          imagePath={button.imagePath}
-          onClick={() => startNewGame(button.label)}
-          id={button.label}
-        />
+        <motion.div
+          variants={itemVariants}
+          className="         
+            w-[75%]
+            h-[4rem]
+            sm:h-[5rem]
+            mt-3
+            mb-3
+            flex 
+            flex-row 
+            justify-center 
+            items-center 
+            "
+        >
+          <GameCategoryButton
+            imagePath={button.imagePath}
+            onClick={() => startNewGame(button.label)}
+            id={button.label}
+          />
+        </motion.div>
       ))}
-    </div>
+    </motion.div>
   );
 };
