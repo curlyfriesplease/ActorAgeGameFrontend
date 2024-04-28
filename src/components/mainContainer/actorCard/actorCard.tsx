@@ -2,6 +2,7 @@ import { Actor } from '../../../types/types';
 import { ConnectButton } from '../../buttons/connectButton';
 import { ActorAge } from './actorAge';
 import { KnownForAnimatedTooltip } from './knownFor';
+import { SeeFullCredits } from './seeCredits';
 
 export const ActorCard = ({
   data,
@@ -122,8 +123,13 @@ export const ActorCard = ({
               z-1
               "
             >
-              <KnownForAnimatedTooltip items={data?.known_for} />
+              <KnownForAnimatedTooltip
+                items={data?.known_for}
+                gameOver={gameOver}
+              />
             </div>
+
+            {gameOver && <SeeFullCredits actorId={data?.id} />}
 
             {!questionNotYetAnswered && (
               <ActorAge

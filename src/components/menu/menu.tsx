@@ -75,6 +75,7 @@ export const Menu = ({
             justify-center 
             items-center 
             "
+          key={`motionDiv-${button.label}`}
         >
           <GameCategoryButton
             imagePath={button.imagePath}

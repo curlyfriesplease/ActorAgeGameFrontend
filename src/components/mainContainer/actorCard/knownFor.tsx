@@ -6,7 +6,9 @@ import { KnownForData } from '../../../types/types';
 
 export const KnownForAnimatedTooltip = ({
   items,
+  gameOver,
 }: {
+  gameOver: boolean;
   items: KnownForData[];
 }) => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
@@ -38,14 +40,18 @@ export const KnownForAnimatedTooltip = ({
     <>
       {items.map((item) => (
         <div
-          className="-mr-4  relative group"
+          className={`-mr-4  relative group ${
+            gameOver
+              ? 'pointer-events-none grayscale opacity-40'
+              : 'pointer-events-auto'
+          }`}
           key={item.original_name}
           onMouseEnter={() => setHoveredIndex(item.id)}
           onMouseLeave={() => setHoveredIndex(null)}
         >
           {hoveredIndex === item.id && (
             <motion.div
-              initial={{ opacity: 0, y: 20, scale: 0.6 }}
+              initial={{ opacity: 0, x: -40, scale: 0.6 }}
               animate={{
                 opacity: 1,
                 y: 0,
@@ -56,17 +62,37 @@ export const KnownForAnimatedTooltip = ({
                   damping: 10,
                 },
               }}
-              exit={{ opacity: 0, y: 20, scale: 0.6 }}
+              exit={{ opacity: 0, x: -40, scale: 0.6 }}
               style={{
                 translateX: translateX,
                 rotate: rotate,
                 whiteSpace: 'nowrap',
               }}
-              className="absolute -top-16 -left-1/2 translate-x-1/2 flex text-xs flex-col items-center justify-center rounded-md bg-black z-50 shadow-xl px-4 py-2"
+              className="
+              absolute 
+              -top-16 
+              -left-1/2 
+              translate-x-1/2 
+              flex 
+              text-xs 
+              flex-col 
+              items-center 
+              justify-center 
+              rounded-md 
+              bg-black 
+              z-50 
+              shadow-xl 
+              px-4 
+              py-2
+              max-w-[160px]
+              sm:max-w-[400px]
+              text-wrap
+              overflow-hidden
+              "
             >
               <div className="absolute inset-x-10 z-30 w-[20%] -bottom-px bg-gradient-to-r from-transparent via-emerald-500 to-transparent h-px " />
               <div className="absolute left-10 w-[40%] z-30 -bottom-px bg-gradient-to-r from-transparent via-sky-500 to-transparent h-px " />
-              <div className="font-bold text-white relative z-30 text-base">
+              <div className="font-bold text-wrap text-white relative z-30 text-base">
                 {item.original_title || item.original_name}
               </div>
               <div className="text-white text-xs">{releaseYear(item)}</div>
@@ -78,7 +104,7 @@ export const KnownForAnimatedTooltip = ({
             width={100}
             src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
             alt={item.original_title || item.original_name}
-            className="
+            className={`
             object-cover
              !m-0 
              !p-0 
@@ -88,13 +114,14 @@ export const KnownForAnimatedTooltip = ({
              w-20
              md:h-28
              md:w-28
-             ring-4 
+             ${gameOver ? '' : 'ring-4'}
+             
              ring-neutral-950
              group-hover:scale-105 
              group-hover:z-30
              relative 
              transition 
-             duration-500"
+             duration-500`}
           />
         </div>
       ))}
