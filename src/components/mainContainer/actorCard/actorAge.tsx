@@ -5,9 +5,9 @@ export const ActorAge = ({
   id,
   deathAge,
 }: {
-  age: number;
+  age: number | null;
   id: number;
-  deathAge: number;
+  deathAge: number | null;
 }) => {
   const showDeathInfo = typeof deathAge === 'number' && !isNaN(deathAge);
 

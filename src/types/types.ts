@@ -1,3 +1,5 @@
+import { Templates } from '../components/mainContainer/mainContainer';
+
 export type KnownForData = {
   first_air_date: string;
   release_date: string;
@@ -14,7 +16,7 @@ export type Actor = {
   deathday: string;
   gender: number;
   id: number;
-  known_for: KnownForData;
+  known_for: KnownForData[];
   known_for_department: string;
   name: string;
   original_name: string;
@@ -26,3 +28,5 @@ export type Button = {
   imagePath: string;
   label: string;
 };
+
+export type GameType = keyof Templates | 'random';

@@ -5,13 +5,16 @@ import { Actor } from '../../types/types';
 import { Header } from './header/header';
 import { Game } from '../game/game';
 import { Menu } from '../menu/menu';
-import * as topStars from '../../gameTemplates/topStars.json';
-import * as marvel from '../../gameTemplates/marvel.json';
+import topStars from '../../gameTemplates/topStars.json';
+import marvel from '../../gameTemplates/marvel.json';
+import { GameType } from '../../types/types';
 
 const templates = {
-  topStars: topStars.default,
-  marvel: marvel.default,
+  topStars: topStars,
+  marvel: marvel,
 };
+
+export type Templates = typeof templates;
 
 let randomActorIds: Array<number> = [];
 
@@ -66,7 +69,7 @@ export const MainContainer = () => {
     setQuestionNotYetAnswered(true);
   };
 
-  const startNewGame = (gameType: string) => {
+  const startNewGame = (gameType: GameType) => {
     console.log('the gameType is:', gameType);
     setQuestionTemplateInUse(gameType);
     if (gameType !== 'random') {

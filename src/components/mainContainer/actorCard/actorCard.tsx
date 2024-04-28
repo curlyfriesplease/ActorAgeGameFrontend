@@ -10,8 +10,6 @@ export const ActorCard = ({
   age,
   deathAge,
   questionNotYetAnswered,
-  showAnswerScreen,
-  lastAnswer,
   gameOver,
 }: {
   data: Actor;
@@ -125,7 +123,7 @@ export const ActorCard = ({
               "
             >
               <KnownForAnimatedTooltip
-                items={data?.known_for}
+                items={data.known_for}
                 gameOver={gameOver}
               />
             </div>

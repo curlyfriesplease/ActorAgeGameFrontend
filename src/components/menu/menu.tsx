@@ -1,6 +1,7 @@
 import { GameCategoryButton } from '../buttons/gameCategoryButton';
 import { Button } from '../../types/types';
 import { motion } from 'framer-motion';
+import { GameType } from '../../types/types';
 
 const buttonArray = [
   {
@@ -24,7 +25,7 @@ const buttonArray = [
 export const Menu = ({
   startNewGame,
 }: {
-  startNewGame: (gameType: string) => void;
+  startNewGame: (gameType: GameType) => void;
 }) => {
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -79,7 +80,7 @@ export const Menu = ({
         >
           <GameCategoryButton
             imagePath={button.imagePath}
-            onClick={() => startNewGame(button.label)}
+            onClick={() => startNewGame(button.label as GameType)}
             id={button.label}
           />
         </motion.div>

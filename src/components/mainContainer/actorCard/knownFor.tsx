@@ -1,6 +1,6 @@
 // All this code below is copied from https://ui.aceternity.com/components/animated-tooltip
 
-import { useState } from 'react';
+import { MouseEvent, useState } from 'react';
 import { motion, useTransform, useMotionValue, useSpring } from 'framer-motion';
 import { KnownForData } from '../../../types/types';
 
@@ -19,7 +19,7 @@ export const KnownForAnimatedTooltip = ({
     useTransform(x, [-100, 100], [-45, 45]),
     springConfig
   );
-  const releaseYear = (item) => {
+  const releaseYear = (item: KnownForData) => {
     if (item.media_type === 'tv') {
       return item.first_air_date.split('-')[0];
     } else {
@@ -31,8 +31,8 @@ export const KnownForAnimatedTooltip = ({
     useTransform(x, [-100, 100], [-50, 50]),
     springConfig
   );
-  const handleMouseMove = (event: any) => {
-    const halfWidth = event.target.offsetWidth / 2;
+  const handleMouseMove = (event: MouseEvent<HTMLImageElement>) => {
+    const halfWidth = event.currentTarget.offsetWidth / 2;
     x.set(event.nativeEvent.offsetX - halfWidth); // set the x value, which is then used in transform and rotate
   };
 

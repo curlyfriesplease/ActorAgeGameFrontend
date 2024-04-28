@@ -4,6 +4,7 @@ import { ActorCard } from '../mainContainer/actorCard/actorCard';
 import { AnswerResult } from '../mainContainer/answerResult/answerResult';
 import { Loading } from '../Loading/loading';
 import { motion, AnimatePresence } from 'framer-motion';
+import { GameType } from '../../types/types';
 
 export const Game = ({
   currentActors,
@@ -25,7 +26,7 @@ export const Game = ({
   showAnswerScreen: boolean;
   handleClickActorCard: (choice: number) => void;
   goToNextQuestion: () => void;
-  startNewGame: (gameType: string) => void;
+  startNewGame: (gameType: GameType) => void;
   setShowGame: (showGame: boolean) => void;
   gameType: string;
 }) => {
