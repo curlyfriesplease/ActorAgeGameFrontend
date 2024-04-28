@@ -11,6 +11,8 @@ const templates = {
   topStars: topStars.default,
 };
 
+let randomActorIds: Array<number> = [];
+
 export const MainContainer = () => {
   const [showGame, setShowGame] = useState<boolean>(false);
   const [currentActors, setCurrentActors] = useState<Array<Actor>>([]);
@@ -24,7 +26,17 @@ export const MainContainer = () => {
     useState<boolean>(false);
   const [questionTemplateInUse, setQuestionTemplateInUse] =
     useState<string>('random');
-  const [questionNumber, setQuestionNumber] = useState<number>(0);
+
+  const oneRandomActorFromRemainingActorIds = () => {
+    console.log(
+      'fetching one random actor from remainingActorIds, current length: ',
+      randomActorIds.length
+    );
+    return randomActorIds.splice(
+      Math.floor(Math.random() * randomActorIds.length),
+      1
+    )[0];
+  };
 
   const preLoadNextQuestionActors = () => {
     console.log('preLoadNextQuestionActors called');
@@ -33,16 +45,10 @@ export const MainContainer = () => {
         'Preloading next question actors from questionTemplateInUse:',
         questionTemplateInUse
       );
-      console.log(
-        'fetching actors' +
-          templates[questionTemplateInUse][questionNumber + 1][0] +
-          ' and ' +
-          templates[questionTemplateInUse][questionNumber + 1][1]
-      );
       console.groupEnd();
       return fetchActorData(
-        templates[questionTemplateInUse][questionNumber + 1][0],
-        templates[questionTemplateInUse][questionNumber + 1][1],
+        oneRandomActorFromRemainingActorIds(),
+        oneRandomActorFromRemainingActorIds(),
         setNextQuestionActors,
         setIsLoading
       );
@@ -56,14 +62,14 @@ export const MainContainer = () => {
     setCurrentActors(nextQuestionActors);
     // TODO: something to deal with clicking really fast through to the next question, before the next actors are loaded
     setQuestionNotYetAnswered(true);
-    if (questionTemplateInUse !== 'random') {
-      setQuestionNumber((prev) => prev + 1);
-    }
   };
 
   const startNewGame = (gameType: string) => {
     console.log('the gameType is:', gameType);
     setQuestionTemplateInUse(gameType);
+    if (gameType !== 'random') {
+      randomActorIds = [...templates[gameType]].flat();
+    }
     setCurrentScore(0);
     setCurrentActors([]);
     setNextQuestionActors([]);
@@ -74,16 +80,13 @@ export const MainContainer = () => {
       case 'random':
         fetchActorData(null, null, setCurrentActors, setIsLoading);
         break;
-      case 'topStars':
+      default:
         fetchActorData(
-          topStars.default[0][0],
-          topStars.default[0][1],
+          oneRandomActorFromRemainingActorIds(),
+          oneRandomActorFromRemainingActorIds(),
           setCurrentActors,
           setIsLoading
         );
-        break;
-      default:
-        console.error('gameType not recognised, gametype:', gameType);
     }
     setShowGame(true);
   };

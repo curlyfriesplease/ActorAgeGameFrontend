@@ -44,10 +44,11 @@ export const FloatingScore = ({ currentScore }: { currentScore: number }) => {
       font-jersey
       rounded-full
       ${scoreColor}
+      z-10
       `}
     >
       <h4 className="text-2xl">SCORE</h4>
-      <h4 className="text-5xl">{currentScore}</h4>
+      <h4 className="text-5xl z-10">{currentScore}</h4>
       {currentScore > 9 && <Fire />}
     </div>
   );

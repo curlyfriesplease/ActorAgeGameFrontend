@@ -6,7 +6,7 @@ import './style.scss';
 export const Fire = () => {
   const parts = 50;
   const particles = Array.from({ length: parts }, (_, i) => (
-    <div key={i} className="particle" />
+    <div key={i} className="particle z-0" />
   ));
 
   return (
@@ -18,7 +18,7 @@ export const Fire = () => {
       flex
       items-center
       justify-center
-      z-[-5]
+      z-0
       w-[50%]
       h-[50%]
       opacity-80
