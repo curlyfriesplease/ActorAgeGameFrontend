@@ -6,9 +6,11 @@ import { Header } from './header/header';
 import { Game } from '../game/game';
 import { Menu } from '../menu/menu';
 import * as topStars from '../../gameTemplates/topStars.json';
+import * as marvel from '../../gameTemplates/marvel.json';
 
 const templates = {
   topStars: topStars.default,
+  marvel: marvel.default,
 };
 
 let randomActorIds: Array<number> = [];
