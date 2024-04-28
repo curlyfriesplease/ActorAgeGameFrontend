@@ -161,6 +161,7 @@ export const MainContainer = () => {
           goToNextQuestion={goToNextQuestion}
           startNewGame={startNewGame}
           setShowGame={setShowGame}
+          gameType={questionTemplateInUse}
         />
       ) : (
         <Menu startNewGame={startNewGame} />

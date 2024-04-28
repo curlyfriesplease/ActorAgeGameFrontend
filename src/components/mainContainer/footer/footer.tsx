@@ -1,13 +1,16 @@
 import { FloatingScore } from './floatingScore';
+import { ShareButtons } from './shareButtons';
 
 export const Footer = ({
-  questionNotYetAnswered,
   currentScore,
   lastAnswer,
+  gameOver,
+  gameType,
 }: {
-  questionNotYetAnswered: boolean;
   currentScore: number;
   lastAnswer: boolean;
+  gameOver: boolean;
+  gameType: string;
 }) => {
   return (
     <div
@@ -21,6 +24,9 @@ export const Footer = ({
         "
     >
       {lastAnswer && <FloatingScore currentScore={currentScore} />}
+      {gameOver && (
+        <ShareButtons currentScore={currentScore} gameType={gameType} />
+      )}
     </div>
   );
 };

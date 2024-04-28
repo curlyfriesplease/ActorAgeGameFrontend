@@ -12,6 +12,7 @@ export const ActorCard = ({
   questionNotYetAnswered,
   showAnswerScreen,
   lastAnswer,
+  gameOver,
 }: {
   data: Actor;
   onClick: () => void;
@@ -20,6 +21,7 @@ export const ActorCard = ({
   questionNotYetAnswered: boolean;
   showAnswerScreen: boolean;
   lastAnswer: boolean;
+  gameOver: boolean;
 }) => {
   const getAge = (ageString: string) => {
     if (ageString === null) return null;
@@ -43,7 +45,6 @@ export const ActorCard = ({
     }
     return ageAsInteger;
   };
-  const gameOver = showAnswerScreen && !lastAnswer;
 
   return (
     <div

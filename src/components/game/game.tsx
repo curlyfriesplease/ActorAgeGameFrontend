@@ -15,6 +15,7 @@ export const Game = ({
   handleClickActorCard,
   goToNextQuestion,
   setShowGame,
+  gameType,
 }: {
   currentActors: Array<Actor>;
   isLoading: boolean;
@@ -26,7 +27,9 @@ export const Game = ({
   goToNextQuestion: () => void;
   startNewGame: (gameType: string) => void;
   setShowGame: (showGame: boolean) => void;
+  gameType: string;
 }) => {
+  const gameOver = showAnswerScreen && !lastAnswer;
   return (
     <>
       <div
@@ -64,6 +67,7 @@ export const Game = ({
                   questionNotYetAnswered={questionNotYetAnswered}
                   showAnswerScreen={showAnswerScreen}
                   lastAnswer={lastAnswer}
+                  gameOver={gameOver}
                 />
               </motion.div>
             </AnimatePresence>
@@ -91,6 +95,7 @@ export const Game = ({
                   questionNotYetAnswered={questionNotYetAnswered}
                   showAnswerScreen={showAnswerScreen}
                   lastAnswer={lastAnswer}
+                  gameOver={gameOver}
                 />
               </motion.div>
             </AnimatePresence>
@@ -111,9 +116,10 @@ export const Game = ({
         ) : null}
       </div>
       <Footer
-        questionNotYetAnswered={questionNotYetAnswered}
         currentScore={currentScore}
         lastAnswer={lastAnswer}
+        gameOver={gameOver}
+        gameType={gameType}
       />
     </>
   );
