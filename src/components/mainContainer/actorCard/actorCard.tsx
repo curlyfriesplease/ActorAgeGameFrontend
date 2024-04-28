@@ -9,12 +9,16 @@ export const ActorCard = ({
   age,
   deathAge,
   questionNotYetAnswered,
+  showAnswerScreen,
+  lastAnswer,
 }: {
   data: Actor;
   onClick: () => void;
   age: string;
   deathAge: string;
   questionNotYetAnswered: boolean;
+  showAnswerScreen: boolean;
+  lastAnswer: boolean;
 }) => {
   const getAge = (ageString: string) => {
     if (ageString === null) return null;
@@ -38,6 +42,7 @@ export const ActorCard = ({
     }
     return ageAsInteger;
   };
+  const gameOver = showAnswerScreen && !lastAnswer;
 
   return (
     <div
@@ -76,13 +81,14 @@ export const ActorCard = ({
                 }
                 alt={data?.name}
                 onClick={onClick}
-                className="
-              rounded-[120px]
-              object-contain
-              max-h-full
-              ring-8
-              ring-neutral-950
-              "
+                className={`
+                rounded-[120px]
+                object-contain
+                max-h-full
+                ring-8
+                ring-neutral-950
+                ${gameOver ? 'grayscale' : ''}
+                `}
               />
             </div>
             {data?.name && (

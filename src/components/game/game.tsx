@@ -62,6 +62,8 @@ export const Game = ({
                   age={currentActors[0].birthday}
                   deathAge={currentActors[0].deathday}
                   questionNotYetAnswered={questionNotYetAnswered}
+                  showAnswerScreen={showAnswerScreen}
+                  lastAnswer={lastAnswer}
                 />
               </motion.div>
             </AnimatePresence>
@@ -87,6 +89,8 @@ export const Game = ({
                   age={currentActors[1].birthday}
                   deathAge={currentActors[1].deathday}
                   questionNotYetAnswered={questionNotYetAnswered}
+                  showAnswerScreen={showAnswerScreen}
+                  lastAnswer={lastAnswer}
                 />
               </motion.div>
             </AnimatePresence>
