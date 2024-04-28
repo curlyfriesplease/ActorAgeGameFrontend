@@ -1,6 +1,7 @@
 export const SeeFullCredits = ({ actorId }: { actorId: number }) => {
-  const onClick = () => {
+  const onClick = (event: React.MouseEvent) => {
     // in a new tab, open https://www.howoldwasthat.actor/actor/{actorId}
+    event.stopPropagation();
     window.open(`https://www.howoldwasthat.actor/actor/${actorId}`, '_blank');
   };
 
@@ -29,6 +30,7 @@ export const SeeFullCredits = ({ actorId }: { actorId: number }) => {
         items-center
         text-base
         text-neutral-950
+        z-20
         "
       onClick={onClick}
     >

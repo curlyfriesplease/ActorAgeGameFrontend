@@ -32,6 +32,7 @@ export const AnswerResult = ({
       w-[90%]
       h-[40%]
       rounded-full
+      z-10
       "
       onClick={() => {
         if (lastAnswer) goToNextQuestion();
@@ -44,11 +45,13 @@ export const AnswerResult = ({
         minSize={0.9}
         maxSize={2.5}
         particleDensity={100}
-        className="w-full h-full"
+        className="w-full h-full absolute z-0"
         particleColor="#fda4af"
       />
       <div
+        id="answer-bounceInLetters-container"
         className="
+        absolute
         flex
         flex-col
         justify-center 
@@ -58,6 +61,7 @@ export const AnswerResult = ({
         absolute
         font-honk
         font-normal
+        pointer-events-none
         "
       >
         <StaggeredBounceInLetters
