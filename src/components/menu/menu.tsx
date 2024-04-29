@@ -2,22 +2,26 @@ import { GameCategoryButton } from '../buttons/gameCategoryButton';
 import { Button } from '../../types/types';
 import { motion } from 'framer-motion';
 import { GameType } from '../../types/types';
+import marvlogo from '../../assets/marvlogo.png';
+import nineties from '../../assets/nineties.png';
+import random from '../../assets/random.png';
+import topstars from '../../assets/topstars.png';
 
 const buttonArray = [
   {
-    imagePath: '/src/assets/marvlogo.png',
+    imagePath: marvlogo,
     label: 'marvel',
   },
   {
-    imagePath: '/src/assets/topstars.png',
+    imagePath: topstars,
     label: 'topStars',
   },
   {
-    imagePath: '/src/assets/nineties.png',
+    imagePath: nineties,
     label: 'nineties',
   },
   {
-    imagePath: '/src/assets/random.png',
+    imagePath: random,
     label: 'random',
   },
 ];
