@@ -19,6 +19,7 @@ export const GameCategoryButton = ({
             pb-1
             h-full
             w-full
+            max-w-[30rem]
             "
     >
       <img
