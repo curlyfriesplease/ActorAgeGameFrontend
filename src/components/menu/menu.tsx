@@ -81,7 +81,6 @@ export const Menu = ({
           <GameCategoryButton
             imagePath={button.imagePath}
             onClick={() => startNewGame(button.label as GameType)}
-            id={button.label}
           />
         </motion.div>
       ))}

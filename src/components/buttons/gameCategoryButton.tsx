@@ -1,11 +1,9 @@
 export const GameCategoryButton = ({
   imagePath,
   onClick,
-  id,
 }: {
   imagePath: string;
   onClick: () => void;
-  id: string;
 }) => {
   return (
     <button
