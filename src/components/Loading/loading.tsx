@@ -1,3 +1,5 @@
+import loader from '../../assets/loader.png';
+
 export const Loading = () => {
   return (
     <div
@@ -10,7 +12,7 @@ export const Loading = () => {
         h-full
         "
     >
-      <p>Loading....</p>
+      <img src={loader} alt="loading" />
     </div>
   );
 };
