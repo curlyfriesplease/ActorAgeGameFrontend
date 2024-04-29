@@ -48,7 +48,7 @@ export const ShareButtons = ({
           rounded-3xl
           text-neutral-950
           bg-neutral-950
-          bg-opacity-80
+          bg-opacity-90
           z-10
           flex
           flex-col

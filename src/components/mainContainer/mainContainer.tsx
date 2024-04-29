@@ -34,6 +34,8 @@ export const MainContainer = () => {
   const [questionTemplateInUse, setQuestionTemplateInUse] =
     useState<string>('random');
 
+  // TODO: Make an originalQuestionTemplateInUse so that the share button text doesn't say 'random' was being played, if the player makes it all the way through
+
   const oneRandomActorFromRemainingActorIds = () => {
     console.log(
       'fetching one random actor from remainingActorIds, current length: ',
@@ -53,6 +55,12 @@ export const MainContainer = () => {
         questionTemplateInUse
       );
       console.groupEnd();
+      if (randomActorIds.length < 2) {
+        window.alert(
+          "Blimey. You've made it through all the actors in this game template. The game will continue, but with random actors from now on."
+        );
+        setQuestionTemplateInUse('random');
+      }
       return fetchActorData(
         oneRandomActorFromRemainingActorIds(),
         oneRandomActorFromRemainingActorIds(),

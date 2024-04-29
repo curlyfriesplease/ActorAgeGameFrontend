@@ -31,6 +31,11 @@ export const Game = ({
   gameType: string;
 }) => {
   const gameOver = showAnswerScreen && !lastAnswer;
+  console.group('Game.tsx issue debugging');
+  console.log('currentActors:', currentActors);
+  console.log(currentActors[0] && currentActors[1]);
+  console.log('isLoading:', isLoading);
+  console.groupEnd();
   return (
     <>
       <div
@@ -42,7 +47,7 @@ export const Game = ({
         relative
         "
       >
-        {currentActors && currentActors[0] && currentActors[1] && !isLoading ? (
+        {currentActors[0] && currentActors[1] && !isLoading ? (
           <>
             <AnimatePresence mode="wait">
               <motion.div
