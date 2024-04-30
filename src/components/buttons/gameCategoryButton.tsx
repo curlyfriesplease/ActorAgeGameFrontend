@@ -15,6 +15,8 @@ export const GameCategoryButton = ({
             rounded-full
             ring-4
             ring-neutral-800
+            border-2
+            border-neutral-800
             pt-1
             pb-1
             h-full
