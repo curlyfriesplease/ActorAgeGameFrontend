@@ -14,6 +14,7 @@ export default {
         honk: ['"Honk"', 'system-ui'],
         jersey: ['"Jersey 15"', 'sans-serif'],
         gabarito: ['"Gabarito"', 'sans-serif'],
+        jost: ['"Jost"', 'sans-serif'],
       },
       fontSize: {
         honk: [

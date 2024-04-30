@@ -68,7 +68,12 @@ export const AnswerResult = ({
           text={lastAnswer ? 'Correct' : 'Wrong'}
           isVisible={true}
         />
-        {!lastAnswer && <p className="text-5xl">Score: {currentScore}</p>}
+        {!lastAnswer && (
+          <>
+            <p className="text-4xl">Score: </p>
+            <p className="text-7xl">{currentScore}</p>
+          </>
+        )}
       </div>
     </div>
   );

@@ -6,16 +6,12 @@ import { GameType } from '../../types/types';
 import marvlogo from '../../assets/marvlogo.png';
 import nineties from '../../assets/nineties.png';
 import random from '../../assets/random.png';
-import topstars from '../../assets/topstars.png';
+//import topstars from '../../assets/topstars.png';
 
 const buttonArray = [
   {
     imagePath: marvlogo,
     label: 'marvel',
-  },
-  {
-    imagePath: topstars,
-    label: 'topStars',
   },
   {
     imagePath: nineties,
@@ -80,16 +76,16 @@ export const Menu = ({
               transition: { duration: 0.25 },
             }}
             exit={{ x: -500, opacity: 0, transition: { duration: 0.6 } }}
-            className="w-[80%] max-w-[300px] flex flex-col justify-center items-center text-neutral-950 font-jersey"
+            className="w-[80%] max-w-[300px] flex flex-col justify-center items-center text-neutral-950 font-jost text-2xl"
           >
-            <p className="w-[90%] m-3 mb-4 text-xl">
+            <p className="w-[90%] m-3 mb-6">
               Welcome to the <i>How Old Was That Actor</i> Game! <br /> To play,
               simply guess
             </p>
-            <p className="w-[90%] text-4xl italic font-bold text-sky-700">
-              which actor was born first?
+            <p className="w-[90%] text-4xl font-bold text-sky-700 drop-shadow-xl">
+              Which actor was born first?
             </p>
-            <p className="w-[90%] m-3 mt-4 mb-9">Click below to start!</p>
+            <p className="w-[90%] m-3 mt-6 mb-9">Click below to start!</p>
             <button
               onClick={() => setGreetingDismissed(true)}
               className="
