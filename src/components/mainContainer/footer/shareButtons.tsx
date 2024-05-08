@@ -27,7 +27,9 @@ export const ShareButtons = ({
 }) => {
   const formattedGameName =
     gameType.charAt(0).toUpperCase() + gameType.slice(1);
-  const shareUrl = `https://game.howoldwasthat.actor/${gameType}`;
+  // TODO: Allow a user to jump straight into a specific game mode
+  // const shareUrl = `https://game.howoldwasthat.actor/${gameType}`;
+  const shareUrl = `https://game.howoldwasthat.actor/`;
   const title =
     '🎬 I just scored ' +
     currentScore +
