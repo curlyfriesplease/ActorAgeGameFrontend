@@ -90,7 +90,7 @@ export const Menu = ({
             />
             <p className="w-[90%] m-3 mb-6">To play, simply guess</p>
             <img src="/TitleCalendar.png" />
-            <p className="w-[90%] text-4xl font-bold text-sky-900 drop-shadow-xl mb-10">
+            <p className="w-[90%] text-4xl font-bold text-sky-900 drop-shadow-xl mb-10 mt-3 ">
               Which actor was born first?
             </p>
             <button
