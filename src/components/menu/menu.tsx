@@ -7,6 +7,7 @@ import marvlogo from '../../assets/marvlogo.png';
 import nineties from '../../assets/nineties.png';
 import random from '../../assets/random.png';
 //import topstars from '../../assets/topstars.png';
+import { SparklesCore } from '../effects/sparkles';
 
 const buttonArray = [
   {
@@ -78,9 +79,18 @@ export const Menu = ({
             exit={{ x: -500, opacity: 0, transition: { duration: 0.6 } }}
             className="w-[80%] max-w-[300px] flex flex-col justify-center items-center text-neutral-950 font-jost text-2xl"
           >
-            <img src="/TitleCalendar.png" />
+            <SparklesCore
+              id="tsParticlesAnswerResult"
+              background="transparent"
+              minSize={1.8}
+              maxSize={3.3}
+              particleDensity={50}
+              className="w-full h-full absolute z-0"
+              particleColor="#fda4af"
+            />
             <p className="w-[90%] m-3 mb-6">To play, simply guess</p>
-            <p className="w-[90%] text-4xl font-bold text-sky-700 drop-shadow-xl mb-10">
+            <img src="/TitleCalendar.png" />
+            <p className="w-[90%] text-4xl font-bold text-sky-900 drop-shadow-xl mb-10">
               Which actor was born first?
             </p>
             <button
@@ -93,8 +103,9 @@ export const Menu = ({
             border-neutral-800
             ring-4
             ring-neutral-800
-            pt-1
-            pb-1
+            mt-4
+            pt-4
+            pb-4
             h-full
             w-full
             max-w-[30rem]
