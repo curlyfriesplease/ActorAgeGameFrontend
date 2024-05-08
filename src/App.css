@@ -14,6 +14,10 @@
   height: 100vh;
 }
 
+#html {
+  height: 100%;
+}
+
 #appDiv {
   background: linear-gradient(-45deg, #ffbe93, #a7c7e7, #ffbe93, #a7c7e7);
   background-size: 400% 400%;
