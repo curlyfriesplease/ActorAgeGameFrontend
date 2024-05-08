@@ -78,14 +78,11 @@ export const Menu = ({
             exit={{ x: -500, opacity: 0, transition: { duration: 0.6 } }}
             className="w-[80%] max-w-[300px] flex flex-col justify-center items-center text-neutral-950 font-jost text-2xl"
           >
-            <p className="w-[90%] m-3 mb-6">
-              Welcome to the <i>How Old Was That Actor</i> Game! <br /> To play,
-              simply guess
-            </p>
-            <p className="w-[90%] text-4xl font-bold text-sky-700 drop-shadow-xl">
+            <img src="/TitleCalendar.png" />
+            <p className="w-[90%] m-3 mb-6">To play, simply guess</p>
+            <p className="w-[90%] text-4xl font-bold text-sky-700 drop-shadow-xl mb-10">
               Which actor was born first?
             </p>
-            <p className="w-[90%] m-3 mt-6 mb-9">Click below to start!</p>
             <button
               onClick={() => setGreetingDismissed(true)}
               className="

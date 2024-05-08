@@ -156,8 +156,8 @@ export const MainContainer = () => {
     flex-col
     items-center 
     justify-between
-    h-screen
-    w-screen
+    h-full
+    w-full
     "
     >
       <Header />
