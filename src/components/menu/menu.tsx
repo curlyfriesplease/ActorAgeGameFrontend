@@ -6,7 +6,7 @@ import { GameType } from '../../types/types';
 import marvlogo from '../../assets/marvlogo.png';
 import nineties from '../../assets/nineties.png';
 import random from '../../assets/random.png';
-//import topstars from '../../assets/topstars.png';
+import ukFlag from '../../assets/ukFlag.png';
 import { SparklesCore } from '../effects/sparkles';
 
 const buttonArray = [
@@ -21,6 +21,10 @@ const buttonArray = [
   {
     imagePath: random,
     label: 'random',
+  },
+  {
+    imagePath: ukFlag,
+    label: 'british',
   },
 ];
 
@@ -88,7 +92,7 @@ export const Menu = ({
               className="w-full h-full absolute z-0"
               particleColor="#fda4af"
             />
-            <p className="w-[90%] m-3 mb-6">To play, simply guess</p>
+            <p className="w-[90%] m-3 mb-6 text-3xl">To play, simply guess</p>
             <img src="/TitleCalendar.png" />
             <p className="w-[90%] text-4xl font-bold text-sky-900 drop-shadow-xl mb-10 mt-3 ">
               Which actor was born first?

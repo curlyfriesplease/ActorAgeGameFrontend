@@ -8,12 +8,14 @@ import { Menu } from '../menu/menu';
 import topStars from '../../gameTemplates/topStars.json';
 import marvel from '../../gameTemplates/marvel.json';
 import nineties from '../../gameTemplates/nineties.json';
+import british from '../../gameTemplates/british.json';
 import { GameType } from '../../types/types';
 
 const templates = {
   topStars: topStars,
   marvel: marvel,
   nineties: nineties,
+  british: british,
 };
 
 export type Templates = typeof templates;
