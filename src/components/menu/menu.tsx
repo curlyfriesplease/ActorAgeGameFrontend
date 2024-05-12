@@ -5,9 +5,9 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { GameType } from '../../types/types';
 import marvlogo from '../../assets/marvlogo.png';
 import nineties from '../../assets/nineties.png';
-import random from '../../assets/random.png';
+// import random from '../../assets/random.png';
 import ukFlag from '../../assets/ukFlag.png';
-import testing from '../../assets/testing.png';
+// import testing from '../../assets/testing.png';
 import { SparklesCore } from '../effects/sparkles';
 
 const buttonArray = [
@@ -19,18 +19,18 @@ const buttonArray = [
     imagePath: nineties,
     label: 'nineties',
   },
-  {
-    imagePath: random,
-    label: 'random',
-  },
+  // {
+  //   imagePath: random,
+  //   label: 'random',
+  // },
   {
     imagePath: ukFlag,
     label: 'british',
   },
-  {
-    imagePath: testing,
-    label: 'testOnly',
-  },
+  // {
+  //   imagePath: testing,
+  //   label: 'testOnly',
+  // },
 ];
 
 export const Menu = ({
