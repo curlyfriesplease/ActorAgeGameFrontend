@@ -6,7 +6,7 @@ import { GameType } from '../../types/types';
 import marvlogo from '../../assets/marvlogo.png';
 import nineties from '../../assets/nineties.png';
 // import random from '../../assets/random.png';
-import ukFlag from '../../assets/ukFlag.png';
+import british from '../../assets/British.png';
 // import testing from '../../assets/testing.png';
 import { SparklesCore } from '../effects/sparkles';
 
@@ -24,7 +24,7 @@ const buttonArray = [
   //   label: 'random',
   // },
   {
-    imagePath: ukFlag,
+    imagePath: british,
     label: 'british',
   },
   // {
