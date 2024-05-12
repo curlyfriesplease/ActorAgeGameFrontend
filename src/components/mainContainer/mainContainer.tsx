@@ -5,19 +5,19 @@ import { Actor } from '../../types/types';
 import { Header } from './header/header';
 import { Game } from '../game/game';
 import { Menu } from '../menu/menu';
-import topStars from '../../gameTemplates/topStars.json';
 import marvel from '../../gameTemplates/marvel.json';
 import nineties from '../../gameTemplates/nineties.json';
 import british from '../../gameTemplates/british.json';
+import scifi from '../../gameTemplates/scifi.json';
 import testOnly from '../../gameTemplates/testOnly.json';
 import { GameType } from '../../types/types';
 
 const templates = {
-  topStars: topStars,
   marvel: marvel,
   nineties: nineties,
   british: british,
   testOnly: testOnly,
+  scifi: scifi,
 };
 
 export type Templates = typeof templates;

@@ -5,8 +5,9 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { GameType } from '../../types/types';
 import marvlogo from '../../assets/marvlogo.png';
 import nineties from '../../assets/nineties.png';
-// import random from '../../assets/random.png';
 import british from '../../assets/British.png';
+import scifi from '../../assets/scifi.png';
+// import random from '../../assets/random.png';
 // import testing from '../../assets/testing.png';
 import { SparklesCore } from '../effects/sparkles';
 
@@ -31,6 +32,10 @@ const buttonArray = [
   //   imagePath: testing,
   //   label: 'testOnly',
   // },
+  {
+    imagePath: scifi,
+    label: 'scifi',
+  },
 ];
 
 export const Menu = ({
