@@ -23,7 +23,7 @@ export const AnswerResult = ({
       -translate-x-1/2 
       -translate-y-1/2 
       z-10
-      w-[80vw]
+      w-screen
       h-full
       flex
       flex-col
