@@ -13,12 +13,8 @@ import { SparklesCore } from '../effects/sparkles';
 
 const buttonArray = [
   {
-    imagePath: marvlogo,
-    label: 'marvel',
-  },
-  {
-    imagePath: nineties,
-    label: 'nineties',
+    imagePath: scifi,
+    label: 'scifi',
   },
   // {
   //   imagePath: random,
@@ -28,13 +24,17 @@ const buttonArray = [
     imagePath: british,
     label: 'british',
   },
+  {
+    imagePath: nineties,
+    label: 'nineties',
+  },
   // {
   //   imagePath: testing,
   //   label: 'testOnly',
   // },
   {
-    imagePath: scifi,
-    label: 'scifi',
+    imagePath: marvlogo,
+    label: 'marvel',
   },
 ];
 
