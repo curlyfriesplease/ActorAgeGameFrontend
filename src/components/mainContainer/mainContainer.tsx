@@ -11,6 +11,7 @@ import british from '../../gameTemplates/british.json';
 import scifi from '../../gameTemplates/scifi.json';
 import testOnly from '../../gameTemplates/testOnly.json';
 import { GameType } from '../../types/types';
+import { twoRandomActorsFromRemainingActorIds } from '../../functions/selectTwoRandomActors';
 
 const templates = {
   marvel: marvel,
@@ -42,16 +43,16 @@ export const MainContainer = () => {
 
   // TODO: Make an originalQuestionTemplateInUse so that the share button text doesn't say 'random' was being played, if the player makes it all the way through
 
-  const oneRandomActorFromRemainingActorIds = () => {
-    console.log(
-      'fetching one random actor from remainingActorIds, current length: ',
-      randomActorIds.length
-    );
-    return randomActorIds.splice(
-      Math.floor(Math.random() * randomActorIds.length),
-      1
-    )[0];
-  };
+  // const oneRandomActorFromRemainingActorIds = () => {
+  //   console.log(
+  //     'fetching one random actor from remainingActorIds, current length: ',
+  //     randomActorIds.length
+  //   );
+  //   return randomActorIds.splice(
+  //     Math.floor(Math.random() * randomActorIds.length),
+  //     1
+  //   )[0];
+  // };
 
   const preLoadNextQuestionActors = () => {
     console.log('preLoadNextQuestionActors called');
@@ -67,9 +68,10 @@ export const MainContainer = () => {
         );
         setQuestionTemplateInUse('random');
       }
+      const twoActors = twoRandomActorsFromRemainingActorIds(randomActorIds);
       return fetchActorData(
-        oneRandomActorFromRemainingActorIds(),
-        oneRandomActorFromRemainingActorIds(),
+        twoActors[0],
+        twoActors[1],
         setNextQuestionActors,
         setIsLoading,
         setApiCallLimitReached
@@ -111,7 +113,7 @@ export const MainContainer = () => {
         actor1 = actor2 = null;
         break;
       default:
-        actor1 = actor2 = oneRandomActorFromRemainingActorIds();
+        [actor1, actor2] = twoRandomActorsFromRemainingActorIds(randomActorIds);
     }
 
     fetchActorData(
