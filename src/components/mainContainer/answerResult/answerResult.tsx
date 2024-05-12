@@ -68,6 +68,9 @@ export const AnswerResult = ({
           text={lastAnswer ? 'Correct' : 'Wrong'}
           isVisible={true}
         />
+
+        {lastAnswer && <p className="text-4xl">Click to continue</p>}
+
         {!lastAnswer && (
           <>
             <p className="text-4xl">Score: </p>
