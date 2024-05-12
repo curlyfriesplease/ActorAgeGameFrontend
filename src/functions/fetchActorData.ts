@@ -4,7 +4,9 @@ export const fetchActorData = (
   actor1: number | null,
   actor2: number | null,
   setActors: React.Dispatch<React.SetStateAction<Array<Actor>>>,
-  setIsLoading: React.Dispatch<React.SetStateAction<boolean>>
+  setIsLoading: React.Dispatch<React.SetStateAction<boolean>>,
+  setApiCallLimitReached: React.Dispatch<React.SetStateAction<boolean>>,
+  callCount: number = 0
 ) => {
   console.log('fetchActorData called with actor1:', actor1, 'actor2:', actor2);
   fetch('https://39gvqht805.execute-api.eu-west-2.amazonaws.com/v1/actors', {
@@ -35,7 +37,7 @@ export const fetchActorData = (
         console.log('✅ Successful data fetch: both actors have birthdays');
         console.dir(jsonObject);
         setActors(jsonObject);
-      } else {
+      } else if (callCount < 10) {
         console.group(
           '🔴 at least one actor does not have a birthday, fetching again...'
         );
@@ -51,7 +53,20 @@ export const fetchActorData = (
           jsonObject[1].birthday
         );
         console.groupEnd();
-        fetchActorData(null, null, setActors, setIsLoading);
+        fetchActorData(
+          null,
+          null,
+          setActors,
+          setIsLoading,
+          setApiCallLimitReached,
+          callCount + 1
+        );
+      }
+      if (callCount >= 10) {
+        console.error(
+          '🔴 10 consecutive calls made without 2x birthday-having actors. Stopping further API calls'
+        );
+        setApiCallLimitReached(true);
       }
     })
     .then(() => setIsLoading(false))

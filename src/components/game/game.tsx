@@ -3,6 +3,7 @@ import { Footer } from '../mainContainer/footer/footer';
 import { ActorCard } from '../mainContainer/actorCard/actorCard';
 import { AnswerResult } from '../mainContainer/answerResult/answerResult';
 import { Loading } from '../Loading/loading';
+import { LoadingInterrupted } from '../Loading/loadingInterrupted';
 import { motion, AnimatePresence } from 'framer-motion';
 import { GameType } from '../../types/types';
 import { getAge } from '../../functions/getAge';
@@ -19,6 +20,7 @@ export const Game = ({
   setShowGame,
   gameType,
   actor1isOlder,
+  apiCallLimitReached,
 }: {
   currentActors: Array<Actor>;
   isLoading: boolean;
@@ -32,6 +34,7 @@ export const Game = ({
   setShowGame: (showGame: boolean) => void;
   gameType: string;
   actor1isOlder: boolean;
+  apiCallLimitReached: boolean;
 }) => {
   const gameOver = showAnswerScreen && !lastAnswer;
   console.group('Game.tsx issue debugging');
@@ -127,6 +130,8 @@ export const Game = ({
               </motion.div>
             </AnimatePresence>
           </>
+        ) : apiCallLimitReached ? (
+          <LoadingInterrupted setShowGame={setShowGame} />
         ) : (
           <Loading />
         )}

@@ -33,6 +33,8 @@ export const MainContainer = () => {
   const [currentScore, setCurrentScore] = useState<number>(0);
   const [lastAnswer, setLastAnswer] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [apiCallLimitReached, setApiCallLimitReached] =
+    useState<boolean>(false);
   const [questionNotYetAnswered, setQuestionNotYetAnswered] =
     useState<boolean>(false);
   const [questionTemplateInUse, setQuestionTemplateInUse] =
@@ -69,11 +71,18 @@ export const MainContainer = () => {
         oneRandomActorFromRemainingActorIds(),
         oneRandomActorFromRemainingActorIds(),
         setNextQuestionActors,
-        setIsLoading
+        setIsLoading,
+        setApiCallLimitReached
       );
     }
     console.log('fetching random actors!!');
-    return fetchActorData(null, null, setNextQuestionActors, setIsLoading);
+    return fetchActorData(
+      null,
+      null,
+      setNextQuestionActors,
+      setIsLoading,
+      setApiCallLimitReached
+    );
   };
 
   const goToNextQuestion = () => {
@@ -95,18 +104,23 @@ export const MainContainer = () => {
     setLastAnswer(false);
     setQuestionNotYetAnswered(true);
     setIsLoading(true);
+
+    let actor1, actor2;
     switch (gameType) {
       case 'random':
-        fetchActorData(null, null, setCurrentActors, setIsLoading);
+        actor1 = actor2 = null;
         break;
       default:
-        fetchActorData(
-          oneRandomActorFromRemainingActorIds(),
-          oneRandomActorFromRemainingActorIds(),
-          setCurrentActors,
-          setIsLoading
-        );
+        actor1 = actor2 = oneRandomActorFromRemainingActorIds();
     }
+
+    fetchActorData(
+      actor1,
+      actor2,
+      setCurrentActors,
+      setIsLoading,
+      setApiCallLimitReached
+    );
     setShowGame(true);
   };
 
@@ -180,6 +194,7 @@ export const MainContainer = () => {
           setShowGame={setShowGame}
           gameType={questionTemplateInUse}
           actor1isOlder={actor1isOlder}
+          apiCallLimitReached={apiCallLimitReached}
         />
       ) : (
         <Menu startNewGame={startNewGame} />
