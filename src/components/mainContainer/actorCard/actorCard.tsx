@@ -9,6 +9,7 @@ export const ActorCard = ({
   data,
   onClick,
   age,
+  ageString,
   deathAge,
   questionNotYetAnswered,
   gameOver,
@@ -17,6 +18,7 @@ export const ActorCard = ({
   data: Actor;
   onClick: () => void;
   age: number | null;
+  ageString: string;
   deathAge: string;
   questionNotYetAnswered: boolean;
   showAnswerScreen: boolean;
@@ -114,7 +116,7 @@ export const ActorCard = ({
               <ActorAge
                 age={age}
                 id={data?.id}
-                deathAge={getDeathAge(age, deathAge)}
+                deathAge={getDeathAge(ageString, deathAge)}
                 sameAgeClarification={sameAgeClarification}
               />
             )}

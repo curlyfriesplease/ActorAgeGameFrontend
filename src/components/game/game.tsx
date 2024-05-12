@@ -80,7 +80,7 @@ export const Game = ({
                   opacity: 1,
                   transition: { duration: 0.3 },
                 }}
-                exit={{ x: -500, opacity: 0, transition: { duration: 0.5 } }}
+                exit={{ x: -500, opacity: 0, transition: { duration: 0.4 } }}
                 className="
               h-[50%]
               w-full
@@ -91,6 +91,7 @@ export const Game = ({
                   data={currentActors[0]}
                   onClick={() => handleClickActorCard(0)}
                   age={actor1age}
+                  ageString={currentActors[0].birthday}
                   deathAge={currentActors[0].deathday}
                   questionNotYetAnswered={questionNotYetAnswered}
                   showAnswerScreen={showAnswerScreen}
@@ -109,7 +110,7 @@ export const Game = ({
                   opacity: 1,
                   transition: { duration: 0.35 },
                 }}
-                exit={{ x: -500, opacity: 0, transition: { duration: 0.6 } }}
+                exit={{ x: -500, opacity: 0, transition: { duration: 0.5 } }}
                 className="
               h-[50%]
               w-full
@@ -120,6 +121,7 @@ export const Game = ({
                   data={currentActors[1]}
                   onClick={() => handleClickActorCard(1)}
                   age={actor2age}
+                  ageString={currentActors[1].birthday}
                   deathAge={currentActors[1].deathday}
                   questionNotYetAnswered={questionNotYetAnswered}
                   showAnswerScreen={showAnswerScreen}
