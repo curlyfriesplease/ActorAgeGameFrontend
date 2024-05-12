@@ -32,14 +32,25 @@ export const fetchActorData = (
         'birthday' in jsonObject[1] &&
         jsonObject[1].birthday !== null
       ) {
-        console.log('Successful data fetch: both actors have birthdays');
+        console.log('✅ Successful data fetch: both actors have birthdays');
         console.dir(jsonObject);
         setActors(jsonObject);
       } else {
-        console.log(
-          '🔴 at least one actor does not have a birthday, fetching again'
+        console.group(
+          '🔴 at least one actor does not have a birthday, fetching again...'
         );
-        console.log('💪 fetching random actor data....');
+        console.log('jsonObjectLength:', jsonObject.length);
+        console.log(
+          jsonObject[0].name,
+          ' actor1birthday: ',
+          jsonObject[0].birthday
+        );
+        console.log(
+          jsonObject[1].name,
+          ' actor2birthday: ',
+          jsonObject[1].birthday
+        );
+        console.groupEnd();
         fetchActorData(null, null, setActors, setIsLoading);
       }
     })

@@ -3,6 +3,7 @@ import { ConnectButton } from '../../buttons/connectButton';
 import { ActorAge } from './actorAge';
 import { KnownForAnimatedTooltip } from './knownFor';
 import { SeeFullCredits } from './seeCredits';
+import { getDeathAge } from '../../../functions/getDeathAge';
 
 export const ActorCard = ({
   data,
@@ -11,39 +12,18 @@ export const ActorCard = ({
   deathAge,
   questionNotYetAnswered,
   gameOver,
+  sameAgeClarification,
 }: {
   data: Actor;
   onClick: () => void;
-  age: string;
+  age: number | null;
   deathAge: string;
   questionNotYetAnswered: boolean;
   showAnswerScreen: boolean;
   lastAnswer: boolean;
   gameOver: boolean;
+  sameAgeClarification: string;
 }) => {
-  const getAge = (ageString: string) => {
-    if (ageString === null) return null;
-    const today = new Date();
-    const birthDate = new Date(ageString);
-    let ageAsInteger = today.getFullYear() - birthDate.getFullYear();
-    const m = today.getMonth() - birthDate.getMonth();
-    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
-      ageAsInteger--;
-    }
-    return ageAsInteger;
-  };
-  const getDeathAge = (birthdayString: string, deathAgeString: string) => {
-    if (deathAgeString === null) return null;
-    const birthDate = new Date(birthdayString);
-    const deathDate = new Date(deathAgeString);
-    let ageAsInteger = deathDate.getFullYear() - birthDate.getFullYear();
-    const m = deathDate.getMonth() - birthDate.getMonth();
-    if (m < 0 || (m === 0 && deathDate.getDate() < birthDate.getDate())) {
-      ageAsInteger--;
-    }
-    return ageAsInteger;
-  };
-
   return (
     <div
       id="actor-card"
@@ -132,9 +112,10 @@ export const ActorCard = ({
 
             {!questionNotYetAnswered && (
               <ActorAge
-                age={getAge(age)}
+                age={age}
                 id={data?.id}
                 deathAge={getDeathAge(age, deathAge)}
+                sameAgeClarification={sameAgeClarification}
               />
             )}
           </div>

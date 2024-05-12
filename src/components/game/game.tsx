@@ -5,6 +5,7 @@ import { AnswerResult } from '../mainContainer/answerResult/answerResult';
 import { Loading } from '../Loading/loading';
 import { motion, AnimatePresence } from 'framer-motion';
 import { GameType } from '../../types/types';
+import { getAge } from '../../functions/getAge';
 
 export const Game = ({
   currentActors,
@@ -17,6 +18,7 @@ export const Game = ({
   goToNextQuestion,
   setShowGame,
   gameType,
+  actor1isOlder,
 }: {
   currentActors: Array<Actor>;
   isLoading: boolean;
@@ -29,6 +31,7 @@ export const Game = ({
   startNewGame: (gameType: GameType) => void;
   setShowGame: (showGame: boolean) => void;
   gameType: string;
+  actor1isOlder: boolean;
 }) => {
   const gameOver = showAnswerScreen && !lastAnswer;
   console.group('Game.tsx issue debugging');
@@ -36,6 +39,22 @@ export const Game = ({
   console.log(currentActors[0] && currentActors[1]);
   console.log('isLoading:', isLoading);
   console.groupEnd();
+
+  const actor1age = getAge(currentActors[0]?.birthday);
+  const actor2age = getAge(currentActors[1]?.birthday);
+  const actorsAreTheSameAge = actor1age === actor2age;
+  const getSameAgeClarification = (id: number) => {
+    if (actorsAreTheSameAge) {
+      if ((actor1isOlder && id === 1) || (!actor1isOlder && id === 2)) {
+        return '(older)';
+      } else {
+        return '(younger)';
+      }
+    } else {
+      return '';
+    }
+  };
+
   return (
     <>
       <div
@@ -68,12 +87,13 @@ export const Game = ({
                 <ActorCard
                   data={currentActors[0]}
                   onClick={() => handleClickActorCard(0)}
-                  age={currentActors[0].birthday}
+                  age={actor1age}
                   deathAge={currentActors[0].deathday}
                   questionNotYetAnswered={questionNotYetAnswered}
                   showAnswerScreen={showAnswerScreen}
                   lastAnswer={lastAnswer}
                   gameOver={gameOver}
+                  sameAgeClarification={getSameAgeClarification(1)}
                 />
               </motion.div>
             </AnimatePresence>
@@ -96,12 +116,13 @@ export const Game = ({
                 <ActorCard
                   data={currentActors[1]}
                   onClick={() => handleClickActorCard(1)}
-                  age={currentActors[1].birthday}
+                  age={actor2age}
                   deathAge={currentActors[1].deathday}
                   questionNotYetAnswered={questionNotYetAnswered}
                   showAnswerScreen={showAnswerScreen}
                   lastAnswer={lastAnswer}
                   gameOver={gameOver}
+                  sameAgeClarification={getSameAgeClarification(2)}
                 />
               </motion.div>
             </AnimatePresence>

@@ -4,10 +4,12 @@ export const ActorAge = ({
   age,
   id,
   deathAge,
+  sameAgeClarification,
 }: {
   age: number | null;
   id: number;
   deathAge: number | null;
+  sameAgeClarification: string;
 }) => {
   const showDeathInfo = typeof deathAge === 'number' && !isNaN(deathAge);
 
@@ -71,6 +73,9 @@ export const ActorAge = ({
         </p>
         {showDeathInfo && (
           <p className="text-xs w-[90%] ">died aged {deathAge}</p>
+        )}
+        {sameAgeClarification && (
+          <p className="text-xs w-[90%]">{sameAgeClarification}</p>
         )}
       </div>
     </div>

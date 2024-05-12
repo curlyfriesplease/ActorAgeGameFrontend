@@ -7,6 +7,7 @@ import marvlogo from '../../assets/marvlogo.png';
 import nineties from '../../assets/nineties.png';
 import random from '../../assets/random.png';
 import ukFlag from '../../assets/ukFlag.png';
+import testing from '../../assets/testing.png';
 import { SparklesCore } from '../effects/sparkles';
 
 const buttonArray = [
@@ -25,6 +26,10 @@ const buttonArray = [
   {
     imagePath: ukFlag,
     label: 'british',
+  },
+  {
+    imagePath: testing,
+    label: 'testOnly',
   },
 ];
 

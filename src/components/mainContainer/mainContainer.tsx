@@ -9,6 +9,7 @@ import topStars from '../../gameTemplates/topStars.json';
 import marvel from '../../gameTemplates/marvel.json';
 import nineties from '../../gameTemplates/nineties.json';
 import british from '../../gameTemplates/british.json';
+import testOnly from '../../gameTemplates/testOnly.json';
 import { GameType } from '../../types/types';
 
 const templates = {
@@ -16,6 +17,7 @@ const templates = {
   marvel: marvel,
   nineties: nineties,
   british: british,
+  testOnly: testOnly,
 };
 
 export type Templates = typeof templates;
@@ -177,6 +179,7 @@ export const MainContainer = () => {
           startNewGame={startNewGame}
           setShowGame={setShowGame}
           gameType={questionTemplateInUse}
+          actor1isOlder={actor1isOlder}
         />
       ) : (
         <Menu startNewGame={startNewGame} />
