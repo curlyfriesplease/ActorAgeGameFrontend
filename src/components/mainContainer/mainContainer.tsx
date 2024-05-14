@@ -67,7 +67,15 @@ export const MainContainer = () => {
         );
         setQuestionTemplateInUse('random');
       }
+      console.log(
+        '👷‍♂️ actorIdsLength before calling twoRandom: ',
+        randomActorIds.length
+      );
       const twoActors = twoRandomActorsFromRemainingActorIds(randomActorIds);
+      console.log(
+        '👷‍♂️ actorIdsLength AFTER calling twoRandom: ',
+        randomActorIds.length
+      );
       return fetchActorData(
         twoActors[0],
         twoActors[1],
