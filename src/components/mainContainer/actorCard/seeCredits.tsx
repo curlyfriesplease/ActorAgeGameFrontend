@@ -14,7 +14,6 @@ export const SeeFullCredits = ({ actorId }: { actorId: number }) => {
         -translate-y-1/2 
         right-[-3rem] 
         rounded 
-        p-0
         w-20
         h-20
         rounded-full
@@ -28,13 +27,15 @@ export const SeeFullCredits = ({ actorId }: { actorId: number }) => {
         flex-center
         justify-center
         items-center
-        text-base
+        text-xs
+        text-wrap
         text-neutral-950
         z-20
+        p-1
         "
       onClick={onClick}
     >
-      See full credits
+      See ages in all roles
     </button>
   );
 };
