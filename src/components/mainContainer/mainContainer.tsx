@@ -95,6 +95,10 @@ export const MainContainer = () => {
   };
 
   const goToNextQuestion = () => {
+    console.log(
+      '👉 goToNextQuestion called, setting nextQuestionActors: ',
+      nextQuestionActors
+    );
     setCurrentActors(nextQuestionActors);
     // TODO: something to deal with clicking really fast through to the next question, before the next actors are loaded
     setQuestionNotYetAnswered(true);
