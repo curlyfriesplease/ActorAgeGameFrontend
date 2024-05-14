@@ -12,7 +12,6 @@ export const AnswerResult = ({
   currentScore: number;
   setShowGame: (showGame: boolean) => void;
 }) => {
-  console.log(lastAnswer, ' answerResult lastAnswer');
   return (
     <div
       id="answer-result"

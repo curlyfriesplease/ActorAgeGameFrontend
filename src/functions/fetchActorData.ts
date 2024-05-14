@@ -70,5 +70,8 @@ export const fetchActorData = (
       }
     })
     .then(() => setIsLoading(false))
-    .catch((error) => console.error('error', error));
+    .catch((error) => {
+      console.error('error', error);
+      setApiCallLimitReached(true);
+    });
 };

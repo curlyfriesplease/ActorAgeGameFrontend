@@ -55,13 +55,12 @@ export const MainContainer = () => {
   // };
 
   const preLoadNextQuestionActors = () => {
-    console.log('preLoadNextQuestionActors called');
+    console.log('🫥 preLoadNextQuestionActors called');
     if (questionTemplateInUse !== 'random') {
-      console.group(
-        'Preloading next question actors from questionTemplateInUse:',
+      console.log(
+        '🫥Preloading next question actors from questionTemplateInUse:',
         questionTemplateInUse
       );
-      console.groupEnd();
       if (randomActorIds.length < 2) {
         window.alert(
           "Blimey. You've made it through all the actors in this game template. The game will continue, but with random actors from now on."
@@ -77,7 +76,7 @@ export const MainContainer = () => {
         setApiCallLimitReached
       );
     }
-    console.log('fetching random actors!!');
+    console.log('fetching two random actors!!');
     return fetchActorData(
       null,
       null,
@@ -88,18 +87,18 @@ export const MainContainer = () => {
   };
 
   const goToNextQuestion = () => {
-    console.log('questionTemplateInUse:', questionTemplateInUse);
     setCurrentActors(nextQuestionActors);
     // TODO: something to deal with clicking really fast through to the next question, before the next actors are loaded
     setQuestionNotYetAnswered(true);
   };
 
   const startNewGame = (gameType: GameType) => {
-    console.log('the gameType is:', gameType);
+    console.log('Starting new game. The gameType is:', gameType);
     setQuestionTemplateInUse(gameType);
     if (gameType !== 'random') {
       randomActorIds = [...templates[gameType]].flat();
     }
+    setApiCallLimitReached(false);
     setCurrentScore(0);
     setCurrentActors([]);
     setNextQuestionActors([]);
