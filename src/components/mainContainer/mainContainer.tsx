@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { fetchActorData } from '../../functions/fetchActorData';
 import './style.css';
 import { Actor } from '../../types/types';
@@ -12,6 +12,8 @@ import scifi from '../../gameTemplates/scifi.json';
 import testOnly from '../../gameTemplates/testOnly.json';
 import { GameType } from '../../types/types';
 import { twoRandomActorsFromRemainingActorIds } from '../../functions/selectTwoRandomActors';
+import initializeGoogleAnalytics from '../../../utils/GA4';
+import { TrackGoogleAnalyticsEvent } from '../../../utils/GA4';
 
 const templates = {
   marvel: marvel,
@@ -43,16 +45,9 @@ export const MainContainer = () => {
 
   // TODO: Make an originalQuestionTemplateInUse so that the share button text doesn't say 'random' was being played, if the player makes it all the way through
 
-  // const oneRandomActorFromRemainingActorIds = () => {
-  //   console.log(
-  //     'fetching one random actor from remainingActorIds, current length: ',
-  //     randomActorIds.length
-  //   );
-  //   return randomActorIds.splice(
-  //     Math.floor(Math.random() * randomActorIds.length),
-  //     1
-  //   )[0];
-  // };
+  useEffect(() => {
+    initializeGoogleAnalytics();
+  }, []);
 
   const preLoadNextQuestionActors = () => {
     console.log('🫥 preLoadNextQuestionActors called');
@@ -151,32 +146,40 @@ export const MainContainer = () => {
 
     preLoadNextQuestionActors();
 
+    const incorrectAnswer = () => {
+      console.log('Wrong answer');
+      setLastAnswer(false);
+      TrackGoogleAnalyticsEvent('Result', 'endgame', 'endgame', {
+        template: questionTemplateInUse,
+        score: currentScore,
+      });
+    };
+
+    const correctAnswer = () => {
+      console.log('Correct answer');
+      setCurrentScore((prev: number) => prev + 1);
+      setLastAnswer(true);
+    };
+
     console.log(
       'the older actor was: ',
       actor1isOlder ? currentActors[0].name : currentActors[1].name
     );
+
     if (actor1isOlder) {
       if (choice === 0) {
-        console.log('Choice 0 correct');
-        setCurrentScore((prev: number) => prev + 1);
-        setLastAnswer(true);
+        correctAnswer();
       } else {
-        console.log('wrong');
-        setLastAnswer(false);
+        incorrectAnswer();
       }
     } else {
       if (choice === 1) {
-        console.log('Choice 1 correct');
-        setCurrentScore((prev: number) => prev + 1);
-        setLastAnswer(true);
+        correctAnswer();
       } else {
-        console.log('wrong');
-        setLastAnswer(false);
+        incorrectAnswer();
       }
     }
     setQuestionNotYetAnswered(false);
-    // setIsLoading(true);
-    // fetchActorData(null, null, setCurrentActors, setIsLoading);
   };
 
   return (
