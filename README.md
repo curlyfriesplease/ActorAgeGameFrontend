@@ -5,6 +5,8 @@
 
 This is the frontend that pairs with this backend Lambda function: https://github.com/curlyfriesplease/actorAgeApi
 
+This game can be seen live at https://game.howoldwasthat.actor/ and is best viewed on mobile. At time of writing, there are unresolved issues when viewed on iPhone, some modern elements such as the use of Chromatic fonts do not always yet render correctly.
+
 This is a React & Typescript based project.
 
 `npm run dev` to start.
