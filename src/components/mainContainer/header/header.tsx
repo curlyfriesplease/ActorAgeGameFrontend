@@ -19,7 +19,7 @@ export const Header = () => {
       <button
         className="bg-blue-300 bg-opacity-80 font-jost text-sky-900 p-2 text-sm ring-2 ring-neutral-800 hover:bg-blue-400 w-[75px]"
         onClick={() =>
-          (window.location.href = 'https://game.howoldwasthat.actor')
+          (window.location.href = 'https://actorgame.jonmulhern.co.uk')
         }
       >
         GAME
@@ -32,7 +32,7 @@ export const Header = () => {
       <button
         className="bg-blue-100 bg-opacity-80 font-jost text-sky-900 p-2 text-sm hover:bg-blue-400 w-[75px]"
         onClick={() =>
-          (window.location.href = 'https://www.howoldwasthat.actor')
+          (window.location.href = 'https://actor.jonmulhern.co.uk')
         }
       >
         SEARCH
